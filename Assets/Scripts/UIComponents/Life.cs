@@ -25,18 +25,21 @@ public class Life : MonoBehaviour
 
     private void OnDamage()
     {
-        var firstHeart = transform.GetFirstActiveChild().gameObject;
-
-        if (firstHeart && firstHeart.activeInHierarchy && firstHeart.activeSelf)
+        if (transform)
         {
-            firstHeart.SetActive(false);
-        }
+            var firstHeart = transform.GetFirstActiveChild().gameObject;
 
-        if (transform.GetChildren().All(heart => !heart.gameObject.activeInHierarchy))
-        {
-            transform.GetChildren().Last().gameObject.SetActive(true);
+            if (firstHeart && firstHeart.activeInHierarchy && firstHeart.activeSelf)
+            {
+                firstHeart.SetActive(false);
+            }
 
-            playerEvents.GameOver();
+            if (transform.GetChildren().All(heart => !heart.gameObject.activeInHierarchy))
+            {
+                transform.GetChildren().Last().gameObject.SetActive(true);
+
+                playerEvents.GameOver();
+            }
         }
     }
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    const string Player = "Player";
+
     [SerializeField] private Player player;
 
     [SerializeField] private PlayerEvents events;
@@ -15,6 +17,8 @@ public class PlayerController : MonoBehaviour
             player = Instantiate(player);
 
             player.Events = events;
+
+            player.name = Player;
         };
     }
 
