@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
+            player.Animation(true);
+
             player = Instantiate(player);
 
             player.Events = events;

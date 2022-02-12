@@ -25,7 +25,8 @@ public class Life : MonoBehaviour
 
     private void OnDamage()
     {
-        if (transform)
+        // Avoid code below if Life does not exist anymore
+        if (this)
         {
             var firstHeart = transform.GetFirstActiveChild().gameObject;
 

@@ -4,29 +4,37 @@ using System.Collections.Generic;
 
 public class TrunkSpawner : MonoBehaviour
 {
-    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private Transform[] streams;
 
-    [SerializeField] private Vector2Int timeRange;
+    [SerializeField] private Vector2 timeRange;
 
-    private Queue<Vector3> points;
+    private Queue<Transform> points;
+
+    private bool zigzag;
 
     private void Start()
     {
-        points = new Queue<Vector3>(spawnPoints.Select(transform => transform.position));
+        points = new Queue<Transform>(streams.Select(road => road.GetChild((zigzag = !zigzag) ? 0 : 1)));
 
         Spawn();
     }
 
     private void Spawn()
     {
+        var point = Point();
+
         var trunkType = Random2.Value() ? ObjectType.TrunkShort : ObjectType.TrunkLarge;
 
-        PoolController.Shift(trunkType).Position = Point();
+        var currentTrunk = PoolController.Shift(trunkType);
 
-        Invoke(nameof(Spawn), Random.Range(timeRange.x, timeRange.y + 1));
+        currentTrunk.Position = point.position;
+
+        currentTrunk.Rotation = point.rotation;
+
+        Invoke(nameof(Spawn), Random.Range(timeRange.x, timeRange.y));
     }
 
-    private Vector3 Point()
+    private Transform Point()
     {
         var point = points.Dequeue();
 

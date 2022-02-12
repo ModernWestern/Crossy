@@ -7,9 +7,9 @@ public class PoolController : MonoBehaviour
 {
     [SerializeField] private List<Pool> pools;
 
-    private static event Action<ObjectType, PoolableObject> PushStaticHelper;
+    private static event Action<ObjectType, FroggerPoolObject> PushStaticHelper;
 
-    private static event Func<ObjectType, Transform, PoolableObject> ShiftStaticHelper;
+    private static event Func<ObjectType, Transform, FroggerPoolObject> ShiftStaticHelper;
 
     private void Awake()
     {
@@ -20,17 +20,17 @@ public class PoolController : MonoBehaviour
         ShiftStaticHelper += (type, parent) => pools.LastOrDefault(pool => pool.type == type)?.Shift(parent);
     }
 
-    public static void Push(ObjectType type, PoolableObject obj)
+    public static void Push(ObjectType type, FroggerPoolObject obj)
     {
         PushStaticHelper?.Invoke(type, obj);
     }
 
-    public static PoolableObject Shift(ObjectType type)
+    public static FroggerPoolObject Shift(ObjectType type)
     {
         return ShiftStaticHelper?.Invoke(type, null);
     }
 
-    public static PoolableObject Shift(ObjectType type, Transform parent)
+    public static FroggerPoolObject Shift(ObjectType type, Transform parent)
     {
         return ShiftStaticHelper?.Invoke(type, parent);
     }

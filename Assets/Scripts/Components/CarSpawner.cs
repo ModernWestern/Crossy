@@ -33,7 +33,7 @@ public class CarSpawner : MonoBehaviour
 
         currentVehicle.Rotation = point.rotation;
 
-        Invoke(nameof(Spawn), Random.Range(timeRange.x, timeRange.y + 1));
+        Invoke(nameof(Spawn), Random.Range(timeRange.x, timeRange.y));
     }
 
     private Transform Point()

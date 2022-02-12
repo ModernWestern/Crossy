@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public class PoolableObject : FroggerObject
+public class FroggerPoolObject : FroggerObject
 {
-    public event Action<PoolableObject> OnInvisible;
+    public event Action<FroggerPoolObject> OnInvisible;
 
     public Vector3 Position
     {
@@ -17,13 +17,6 @@ public class PoolableObject : FroggerObject
         get => transform.localRotation;
 
         set => transform.localRotation = value;
-    }
-
-    [SerializeField] private float speedMultiplier = 1f;
-
-    private void Update()
-    {
-        transform.Translate(Vector3.right * speedMultiplier * Time.deltaTime, Space.Self);
     }
 
     public override void OnBecameInvisible()

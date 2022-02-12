@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Pool
 {
-    [SerializeField] private PoolableObject prefab;
+    [SerializeField] private FroggerPoolObject prefab;
 
     [SerializeField] private Transform container;
 
@@ -12,7 +12,7 @@ public class Pool
 
     public ObjectType type;
 
-    private Queue<PoolableObject> queue = new Queue<PoolableObject>();
+    private Queue<FroggerPoolObject> queue = new Queue<FroggerPoolObject>();
 
     public void Populate()
     {
@@ -36,9 +36,9 @@ public class Pool
     /// Removes and returns the object at the beginning of the pool,
     /// if the pool has not objects availables it returns null.
     /// </summary>
-    public PoolableObject Shift(Transform parent)
+    public FroggerPoolObject Shift(Transform parent)
     {
-        if (queue.Count != 0 && queue.Dequeue() is PoolableObject obj)
+        if (queue.Count != 0 && queue.Dequeue() is FroggerPoolObject obj)
         {
             obj.transform.SetParent(parent);
 
@@ -52,7 +52,7 @@ public class Pool
     /// <summary>
     /// Adds an object to the end of the pool.
     /// </summary>
-    public void Push(PoolableObject obj)
+    public void Push(FroggerPoolObject obj)
     {
         if (obj.gameObject.activeInHierarchy && obj.gameObject.activeSelf)
         {

@@ -11,16 +11,34 @@ public class Player : FroggerObject
     private void OnEnable()
     {
         transform.localPosition = defaultPosition;
+
+        transform.eulerAngles = Vector3.zero;
     }
 
-    public void SetDamage()
+    private void OnTriggerEnter(Collider other)
     {
-        Events.Damage();
+        const string Finish = "Finish";
 
-        OnEnable();
+        if (other.CompareTag(Finish))
+        {
+            transform.eulerAngles = Vector3.up * 180;
+
+            Events?.Finish();
+
+            Events = null;
+        }
     }
 
     public override void OnBecameInvisible() => SetDamage();
+
+    private void OnDisable() => Events?.CleanAll();
+
+    public void SetDamage()
+    {
+        Events?.Damage();
+
+        OnEnable();
+    }
 
     public void Up()
     {
@@ -58,7 +76,7 @@ public class Player : FroggerObject
         Animation();
     }
 
-    private void Animation()
+    public void Animation(bool loop = false)
     {
         if (punch != null)
         {
@@ -69,16 +87,13 @@ public class Player : FroggerObject
             punch = null;
         }
 
-        punch = LeanTween.scaleY(gameObject, 0.9f, 1).setEase(LeanTweenType.punch);
-    }
+        punch = LeanTween.scaleY(gameObject, 0.9f, 1).setEase(LeanTweenType.punch).setIgnoreTimeScale(true);
 
-    private void OnTriggerEnter(Collider other)
-    {
-        const string Finish = "Finish";
-
-        if (other.CompareTag(Finish))
+        if (loop)
         {
-            Events.Finish();
+            punch.setLoopPingPong();
+
+            punch.time = 2;
         }
     }
 }
