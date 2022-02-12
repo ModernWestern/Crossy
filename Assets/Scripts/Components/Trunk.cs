@@ -1,6 +1,3 @@
 using UnityEngine;
 
-public class Trunk : PoolableObject
-{
-
-}
+public class Trunk : PoolableObject { }

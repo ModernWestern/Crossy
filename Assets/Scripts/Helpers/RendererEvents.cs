@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class RendererEvents : MonoBehaviour
 {
-    public event Action OnInvisible;
+    public event Action OnVisible, OnInvisible;
 
-    private void OnBecameInvisible()
-    {
-        OnInvisible?.Invoke();
-    }
+    private void OnBecameVisible() => OnVisible?.Invoke();
+
+    private void OnBecameInvisible() => OnInvisible?.Invoke();
 }

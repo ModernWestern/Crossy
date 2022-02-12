@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    const int range = 4;
-
-    private int steps;
-
     void Update()
     {
         SideMovement();
@@ -13,23 +9,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void SideMovement()
     {
-        if (Input.GetKeyDown(KeyCode.A) && steps > -range)
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            transform.Translate(Vector3.forward);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
         {
             transform.Translate(Vector3.left);
-
-            steps--;
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && steps < range)
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            transform.Translate(Vector3.back);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
         {
             transform.Translate(Vector3.right);
-
-            steps++;
         }
-    }
-
-    public void Default()
-    {
-        steps = 0;
     }
 }

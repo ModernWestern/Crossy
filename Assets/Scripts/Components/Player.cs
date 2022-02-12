@@ -1,19 +1,20 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : FroggerObject
 {
     [SerializeField] private PlayerEvents playerEvents;
 
-    [SerializeField] private PlayerMovement movement;
-
-    private Vector3 defaultPosition = new Vector3(0.5f, 0, -3.5f);
+    private Vector3 defaultPosition = new Vector3(-3, 1, 0);
 
     public void SetDamage()
     {
-        movement.Default();
-
         playerEvents.OnDamage();
 
         transform.localPosition = defaultPosition;
+    }
+
+    public override void OnBecameInvisible()
+    {
+        SetDamage();
     }
 }

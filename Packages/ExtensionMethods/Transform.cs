@@ -4,33 +4,40 @@ using System.Collections.Generic;
 
 public static class TransformExtensions
 {
-    public static Transform[] Children(this Transform transform)
+    public static Transform[] GetChildren(this Transform transform)
     {
-        var child = new Transform[transform.childCount];
+        var children = new Transform[transform.childCount];
 
         for (int i = 0, l = transform.childCount; i < l; i++)
         {
-            child[i] = transform.GetChild(i);
+            children[i] = transform.GetChild(i);
         }
 
-        return child;
+        return children;
     }
 
-    public static T[] Children<T>(this Transform transform)
+    public static T[] GetChildren<T>(this Transform transform)
     {
-        var child = new Transform[transform.childCount];
+        var children = new Transform[transform.childCount];
 
         for (int i = 0, l = transform.childCount; i < l; i++)
         {
-            child[i] = transform.GetChild(i);
+            children[i] = transform.GetChild(i);
         }
 
-        return child.ConvertAll(c => c.GetComponent<T>());
+        return children.ConvertAll(c =>
+        {
+            if (c.TryGetComponent(out T component))
+            {
+                return component;
+            }
+            else return default;
+        });
     }
 
     public static Transform GetFirstActiveChild(this Transform transform)
     {
-        var child = transform.Children().FirstOrDefault(c => c.gameObject.activeInHierarchy && c.gameObject.activeSelf);
+        var child = transform.GetChildren().FirstOrDefault(c => c.gameObject.activeInHierarchy && c.gameObject.activeSelf);
 
         return child;
     }

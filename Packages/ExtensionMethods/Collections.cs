@@ -23,6 +23,14 @@ public static class CollectionsExtensions
         }
     }
 
+    public static void BreakableForEach<T>(this T[] collection, Func<bool> predicate, Action<T> action)
+    {
+        for (int i = 0, l = collection.Length; i < l && !predicate(); ++i)
+        {
+            action?.Invoke(collection[i]);
+        }
+    }
+
     public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
     {
         foreach (T t in collection)

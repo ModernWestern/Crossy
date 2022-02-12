@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class CarSpawner : MonoBehaviour
 {
-    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private Transform[] roads;
 
     [SerializeField] private Vector2Int timeRange;
 
@@ -12,7 +12,11 @@ public class CarSpawner : MonoBehaviour
 
     private void Start()
     {
-        points = new Queue<Transform>(spawnPoints);
+        // All the points
+        //points = new Queue<Transform>(roads.Select(road => road.GetChildren()).SelectMany(point => point).Distinct());
+
+        // One point for road
+        points = new Queue<Transform>(roads.Select(road => road.GetChild(Random2.Value() ? 0 : 1)));
 
         Spawn();
     }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,6 +10,10 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+#if UNITY_EDITOR && !UNITY_WEBGL
+
+        Application.targetFrameRate = 60;
+#endif
         Shader.SetGlobalVector(Constants.Light, directionLight);
 
         playerEvents.GameOver += OnGameOver;

@@ -8,7 +8,7 @@ public class Life : MonoBehaviour
 
     private void Awake()
     {
-        transform.Children().ForEach((i, heart) =>
+        transform.GetChildren().ForEach((i, heart) =>
         {
             heart.gameObject.SetActive(i < settings.lifes);
         });
@@ -20,9 +20,9 @@ public class Life : MonoBehaviour
     {
         transform.GetFirstActiveChild().gameObject.SetActive(false);
 
-        if (transform.Children().All(heart => !heart.gameObject.activeInHierarchy))
+        if (transform.GetChildren().All(heart => !heart.gameObject.activeInHierarchy))
         {
-            transform.Children().Last().gameObject.SetActive(true);
+            transform.GetChildren().Last().gameObject.SetActive(true);
 
             playerEvents.OnGameOver();
         }
