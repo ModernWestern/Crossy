@@ -8,23 +8,35 @@ public class Life : MonoBehaviour
 
     private void Awake()
     {
+        SetHearts();
+
+        playerEvents.OnDamage += OnDamage;
+
+        playerEvents.OnFinish += SetHearts;
+    }
+
+    public void SetHearts()
+    {
         transform.GetChildren().ForEach((i, heart) =>
         {
             heart.gameObject.SetActive(i < settings.lifes);
         });
-
-        playerEvents.Damage += OnDamage;
     }
 
     private void OnDamage()
     {
-        transform.GetFirstActiveChild().gameObject.SetActive(false);
+        var firstHeart = transform.GetFirstActiveChild().gameObject;
+
+        if (firstHeart && firstHeart.activeInHierarchy && firstHeart.activeSelf)
+        {
+            firstHeart.SetActive(false);
+        }
 
         if (transform.GetChildren().All(heart => !heart.gameObject.activeInHierarchy))
         {
             transform.GetChildren().Last().gameObject.SetActive(true);
 
-            playerEvents.OnGameOver();
+            playerEvents.GameOver();
         }
     }
 }

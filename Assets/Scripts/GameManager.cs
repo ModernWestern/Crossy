@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 #endif
         Shader.SetGlobalVector(Constants.Light, directionLight);
 
-        playerEvents.GameOver += OnGameOver;
+        playerEvents.OnGameOver += OnGameOver;
     }
 
     private void OnGameOver()

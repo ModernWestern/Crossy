@@ -6,7 +6,7 @@ public class CarSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] roads;
 
-    [SerializeField] private Vector2Int timeRange;
+    [SerializeField] private Vector2 timeRange;
 
     private Queue<Transform> points;
 

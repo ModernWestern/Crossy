@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8859912203609282866}
   - component: {fileID: 8859912203609282865}
   - component: {fileID: 1125656863587112160}
-  - component: {fileID: 585513264}
   - component: {fileID: 8371680973185148290}
   m_Layer: 0
   m_Name: Player
@@ -60,20 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5a7cebc7b84094ab2d669e21754540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEvents: {fileID: 11400000, guid: eaa9515327ff9884d9204df694253211, type: 2}
-  movement: {fileID: 585513264}
---- !u!114 &585513264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8859912203609282862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d83d68d84b218748a3ac16112afacc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  events: {fileID: 11400000, guid: eaa9515327ff9884d9204df694253211, type: 2}
 --- !u!54 &8371680973185148290
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -54,10 +54,13 @@ public class Pool
     /// </summary>
     public void Push(PoolableObject obj)
     {
-        obj.transform.SetParent(container);
+        if (obj.gameObject.activeInHierarchy && obj.gameObject.activeSelf)
+        {
+            obj.transform.SetParent(container);
 
-        obj.SetActive(false);
+            obj.SetActive(false);
 
-        queue.Enqueue(obj);
+            queue.Enqueue(obj);
+        }
     }
 }
