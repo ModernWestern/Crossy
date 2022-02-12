@@ -59,7 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5a7cebc7b84094ab2d669e21754540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  events: {fileID: 11400000, guid: eaa9515327ff9884d9204df694253211, type: 2}
+  ease: 34
+  easeTime: 1
 --- !u!54 &8371680973185148290
 Rigidbody:
   m_ObjectHideFlags: 0

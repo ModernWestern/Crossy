@@ -5,6 +5,8 @@ public class GameSettings : ScriptableObject
 {
     public bool GameOver { get; set; }
 
+    public int goalsAmount = 5;
+
     [Tooltip("Time in seconds")]
     public float time = 300;
 

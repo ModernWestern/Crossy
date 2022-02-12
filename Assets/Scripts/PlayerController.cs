@@ -8,18 +8,33 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerEvents events;
 
+    [SerializeField] private GameSettings gameSettings;
+
+    private int goalCount;
+
     private void Awake()
     {
         player.Events = events;
 
         events.OnFinish += () =>
         {
+            goalCount++;
+
+            if (goalCount >= gameSettings.goalsAmount)
+            {
+                events.GameOver();
+
+                return;
+            }
+
             player = Instantiate(player);
 
             player.Events = events;
 
             player.name = Player;
         };
+
+        events.OnGameOver += () => gameObject.SetActive(false);
     }
 
     private void Update()

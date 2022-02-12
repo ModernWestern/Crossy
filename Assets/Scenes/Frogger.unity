@@ -2763,6 +2763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1616243495}
   events: {fileID: 11400000, guid: eaa9515327ff9884d9204df694253211, type: 2}
+  gameSettings: {fileID: 11400000, guid: 6622dcb4e1665b44f9aa8c4deeaa18b9, type: 2}
 --- !u!4 &2104358211
 Transform:
   m_ObjectHideFlags: 0
