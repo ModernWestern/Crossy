@@ -2,7 +2,15 @@ using UnityEngine;
 
 public class Player : FroggerObject
 {
+    const string Finish = "Finish";
+
+    const string Trunk = "Trunk";
+
+    const string Water = "Water";
+
     public PlayerEvents Events { private get; set; }
+
+    [SerializeField] private ParticleSystem Embers;
 
     private Vector3 defaultPosition = new Vector3(-3, 1, 0);
 
@@ -17,8 +25,6 @@ public class Player : FroggerObject
 
     private void OnTriggerEnter(Collider other)
     {
-        const string Finish = "Finish";
-
         if (other.CompareTag(Finish))
         {
             transform.eulerAngles = Vector3.up * 180;
@@ -26,6 +32,27 @@ public class Player : FroggerObject
             Events?.Finish();
 
             Events = null;
+        }
+
+        if (other.CompareTag(Trunk))
+        {
+            transform.SetParent(other.transform, true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(Trunk))
+        {
+            transform.SetParent(null);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag(Water) && transform.parent == null)
+        {
+            SetDamage();
         }
     }
 
@@ -37,41 +64,24 @@ public class Player : FroggerObject
     {
         Events?.Damage();
 
+        Embers.Play();
+
         OnEnable();
     }
 
-    public void Up()
+    public void Up() => Movement(Vector3.forward, Vector3.zero);
+
+    public void Left() => Movement(Vector3.left, Vector3.up * -90);
+
+    public void Down() => Movement(Vector3.back, Vector3.up * 180);
+
+    public void Right() => Movement(Vector3.right, Vector3.up * 90);
+
+    private void Movement(Vector3 position, Vector3 rotation)
     {
-        transform.Translate(Vector3.forward, Space.World);
+        transform.Translate(position, Space.World);
 
-        transform.eulerAngles = Vector3.zero;
-
-        Animation();
-    }
-
-    public void Left()
-    {
-        transform.Translate(Vector3.left, Space.World);
-
-        transform.eulerAngles = Vector3.up * -90;
-
-        Animation();
-    }
-
-    public void Down()
-    {
-        transform.Translate(Vector3.back, Space.World);
-
-        transform.eulerAngles = Vector3.up * 180;
-
-        Animation();
-    }
-
-    public void Right()
-    {
-        transform.Translate(Vector3.right, Space.World);
-
-        transform.eulerAngles = Vector3.up * 90;
+        transform.eulerAngles = rotation;
 
         Animation();
     }

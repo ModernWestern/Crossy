@@ -41,9 +41,10 @@ GameObject:
   - component: {fileID: 4978354780277356617}
   - component: {fileID: 4978354780277356616}
   - component: {fileID: 4978354780277356619}
+  - component: {fileID: 2223793070770577593}
   m_Layer: 0
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +114,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2223793070770577593
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978354780277356618}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6792185933416631224
 GameObject:
   m_ObjectHideFlags: 0

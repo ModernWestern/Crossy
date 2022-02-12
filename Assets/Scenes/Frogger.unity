@@ -999,7 +999,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &941032207
 GameObject:
@@ -1372,7 +1372,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1093284677
 GameObject:
@@ -1495,7 +1495,7 @@ RectTransform:
   m_Children:
   - {fileID: 2139748612}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1648,7 +1648,7 @@ Transform:
   - {fileID: 1135744953}
   - {fileID: 9032793174879065088}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1543367893 stripped
 Transform:
@@ -1854,25 +1854,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - prefab: {fileID: 3525894752302179288, guid: 6043d531bdc38cd4192bc3f9266ac699, type: 3}
+  - prefab: {fileID: 8153577511864932656, guid: 86c00adbd64d271439f24687c2b05aa7, type: 3}
     container: {fileID: 1740552016}
     amount: 20
     type: 0
-  - prefab: {fileID: 4113932020370669310, guid: b949627c37432564a95f8feced367c62, type: 3}
+  - prefab: {fileID: 3098735895402355204, guid: 354b401ab98eb0e48853987e3e634f07, type: 3}
     container: {fileID: 1740552016}
     amount: 20
     type: 1
   - prefab: {fileID: 590318600870582799, guid: 69076425aebc00e45a6f4f77ed5145ca, type: 3}
     container: {fileID: 1740552016}
-    amount: 10
+    amount: 15
     type: 2
   - prefab: {fileID: 6071425050829023316, guid: 50b20e7531c18004cba47e3f5af1f51e, type: 3}
     container: {fileID: 1740552016}
-    amount: 10
+    amount: 15
     type: 4
   - prefab: {fileID: 1413780632481151358, guid: 4d4e80de983867d42be78e4d03ec7e1f, type: 3}
     container: {fileID: 1740552016}
-    amount: 10
+    amount: 15
     type: 3
 --- !u!4 &1740552016
 Transform:
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   - {fileID: 1179858244}
   - {fileID: 232896847}
   - {fileID: 1599421633}
-  timeRange: {x: 0.01, y: 1}
+  timeRange: {x: 0.01, y: 0.5}
 --- !u!4 &2009362481
 Transform:
   m_ObjectHideFlags: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   goalsAmount: 5
-  time: 30
+  time: 10
   timeType: 0
   lifes: 6
