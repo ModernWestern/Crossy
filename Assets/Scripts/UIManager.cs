@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private PlayerEvents playerEvents;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private CanvasGroup[] gameoverPanels;
+
+    private void Awake()
     {
-        
+        playerEvents.OnGameOver += value =>
+        {
+            gameoverPanels[value ? 0 : 1].SetActive(true, 1.5f, LeanTweenType.easeInOutSine);
+
+            Debug.Log(value);
+        };
     }
 }

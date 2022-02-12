@@ -39,7 +39,7 @@ public class Life : MonoBehaviour
             {
                 transform.GetChildren().Last().gameObject.SetActive(true);
 
-                playerEvents.GameOver();
+                playerEvents.GameOver(false);
             }
         }
     }

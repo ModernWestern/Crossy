@@ -58,7 +58,10 @@ namespace Helpers
                 time?.Invoke(Backward ? count-- : count++);
             }
 
-            completed?.Invoke();
+            if (!stopWhen())
+            {
+                completed?.Invoke();
+            }
 
             routine = null;
         }

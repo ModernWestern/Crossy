@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f8dc437b5ff580743b464c79189dfba4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -80,7 +80,9 @@ Material:
     - Boolean_90F60F4F: 0
     - Boolean_C9EE8E96: 0
     - Vector1_26995138: 20
+    - Vector1_29f0d85592664f04a26d64af656425a9: 1.14
     - Vector1_52058E88: 10
+    - Vector1_7ede89d030ab414f9789b4f06c114f29: 0.65
     - Vector1_91DB8324: -1
     - _AlphaTreshold: 1
     - _BumpScale: 1
@@ -103,8 +105,9 @@ Material:
     m_Colors:
     - Color_12E8935A: {r: 1, g: 1, b: 1, a: 1}
     - Color_F8967D68: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.41509432, g: 0.2656579, b: 0.23300105, a: 1}
+    - Vector2_8fa486466e1b4f8a839e3073e0133384: {r: 0.65, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.5, g: 0.32075474, b: 0.2783019, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Tiiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Tiiling: {r: 0.04, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Vector3 directionLight;
+    [SerializeField] private PlayerEvents playerEvents;
 
     [SerializeField] private GameSettings settings;
 
-    [SerializeField] private PlayerEvents playerEvents;
+    [SerializeField] private Vector3 customLight;
+
 
     void Awake()
     {
@@ -14,12 +15,12 @@ public class GameManager : MonoBehaviour
 
         Application.targetFrameRate = 60;
 #endif
-        Shader.SetGlobalVector(Constants.Light, directionLight);
+        Shader.SetGlobalVector(Constants.Light, customLight);
 
         playerEvents.OnGameOver += OnGameOver;
     }
 
-    private void OnGameOver()
+    private void OnGameOver(bool value)
     {
         settings.GameOver = true;
 

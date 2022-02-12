@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
 
     [SerializeField] private TMP_Text timer;
 
+    [SerializeField] private PlayerEvents events;
+
     [SerializeField] private GameSettings settings;
 
     private Helpers.Timer timerRoutine;
@@ -39,6 +41,6 @@ public class Timer : MonoBehaviour
         {
             timer.text = TimeSpan.FromSeconds(time).ToString(Format);
 
-        }, null, this);
+        }, () => events.GameOver(false), this);
     }
 }

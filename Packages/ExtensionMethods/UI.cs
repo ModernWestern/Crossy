@@ -40,7 +40,7 @@ public static class UIExtensions
 
                 canvasGroup.blocksRaycasts = value;
 
-            }, canvasGroup.alpha, value ? 1 : 0, time).setEase(ease ?? LeanTweenType.linear);
+            }, canvasGroup.alpha, value ? 1 : 0, time).setEase(ease ?? LeanTweenType.linear).setIgnoreTimeScale(true);
         }
 
         return null;

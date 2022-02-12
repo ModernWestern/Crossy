@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
             if (goalCount >= gameSettings.goalsAmount)
             {
-                events.GameOver();
+                events.GameOver(true);
 
                 return;
             }
@@ -36,7 +36,11 @@ public class PlayerController : MonoBehaviour
             player.name = Player;
         };
 
-        events.OnGameOver += () => gameObject.SetActive(false);
+        if (this)
+        {
+            // Avoid player movement after Gameover call
+            events.OnGameOver += value => gameObject.SetActive(false);
+        }
     }
 
     private void Update()

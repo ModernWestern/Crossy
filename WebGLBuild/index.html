@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Frogger</title>
+  </head>
+  <body style="text-align: center">
+    <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #800733"></canvas>
+    <script src="Build/WebGLBuild.loader.js"></script>
+    <script>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/WebGLBuild.data.gz",
+        frameworkUrl: "Build/WebGLBuild.framework.js.gz",
+        codeUrl: "Build/WebGLBuild.wasm.gz",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Modern Western",
+        productName: "Frogger",
+        productVersion: "1",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    </script>
+  </body>
+</html>
