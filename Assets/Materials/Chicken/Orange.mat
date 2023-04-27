@@ -2,14 +2,15 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Orange
   m_Shader: {fileID: -6465566751694194690, guid: fe16ae9cc6a6ed24e9439c67f95ce8e4, type: 3}
-  m_ShaderKeywords: 
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -39,15 +40,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - Boolean_4C881AC7: 0
     - Boolean_90F60F4F: 0
     - Boolean_C9EE8E96: 0
     - Vector1_26995138: 20
+    - Vector1_29f0d85592664f04a26d64af656425a9: 0
     - Vector1_52058E88: 10
+    - Vector1_7ede89d030ab414f9789b4f06c114f29: 0.5
     - Vector1_91DB8324: -1
     - _AlphaTreshold: 1
     - _LightAttenuation: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
     - Color_12E8935A: {r: 1, g: 1, b: 1, a: 1}
     - Color_F8967D68: {r: 1, g: 1, b: 1, a: 1}
@@ -56,3 +62,16 @@ Material:
     - _Tiiling: {r: 1, g: 1, b: 0, a: 0}
     - _lightDirection: {r: 1, g: 0, b: 1, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &5936913054378127662
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5

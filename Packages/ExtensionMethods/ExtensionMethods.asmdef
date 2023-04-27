@@ -28,7 +28,7 @@
             "define": "UNITY_AI_MODULE"
         },
         {
-            "name": "dentedpixel.leantween",
+            "name": "com.dentedpixel.leantween",
             "expression": "",
             "define": "LEANTWEEN_MODULE"
         },
