@@ -1,6 +1,6 @@
 using System;
 
-public static class TipleExtensions
+public static class TupleExtensions
 {
     public static bool Compare<T1, T2>(this Tuple<T1, T2> value, T1 v1, T2 v2)
     {

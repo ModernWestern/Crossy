@@ -28,13 +28,13 @@ public static class DictionaryExtensions
         return true;
     }
 
-    public static bool TryGetValues<K, V>(this Dictionary<K, V> collection, out V[] values, params K[] key)
+    public static bool TryGetValues<TKey, TValue>(this Dictionary<TKey, TValue> collection, out TValue[] values, params TKey[] key)
     {
-        var list = new List<V>();
+        var list = new List<TValue>();
 
         for (int i = 0, l = key.Length; i < l; ++i)
         {
-            if (collection.TryGetValue(key[i], out V value))
+            if (collection.TryGetValue(key[i], out var value))
             {
                 list.Add(value);
             }
@@ -42,15 +42,22 @@ public static class DictionaryExtensions
 
         values = list.ToArray();
 
-        return list?.Count > 0;
+        return list.Count > 0;
     }
-
-    public static IEnumerable<T> GetKeys<T, U>(this Dictionary<T, U> collection)
+ 
+    public static IEnumerable<T> GetKeys<T, TU>(this Dictionary<T, TU> collection)
     {
         return collection.Select(c => c.Key);
     }
 
-    // https://stackoverflow.com/questions/141088/what-is-the-best-way-to-iterate-over-a-dictionary/31918117
+    /// <summary>
+    /// Deconstructs a KeyValuePair into its key and value.
+    /// </summary>
+    /// <typeparam name="TKey">The type of the key.</typeparam>
+    /// <typeparam name="TVal">The type of the value.</typeparam>
+    /// <param name="pair">The KeyValuePair to deconstruct.</param>
+    /// <param name="key">The output key.</param>
+    /// <param name="value">The output value.</param>
     public static void Deconstruct<TKey, TVal>(this KeyValuePair<TKey, TVal> pair, out TKey key, out TVal value)
     {
         key = pair.Key;
@@ -58,48 +65,50 @@ public static class DictionaryExtensions
         value = pair.Value;
     }
 
-    public static void ForEach<T, U>(this Dictionary<T, U> d, Action<KeyValuePair<T, U>> a)
+    public static void ForEach<T, TU>(this Dictionary<T, TU> d, Action<KeyValuePair<T, TU>> a)
     {
-        foreach (KeyValuePair<T, U> p in d)
+        foreach (var p in d)
         {
             a(p);
         }
     }
 
-    public static void ForEach<T, U>(this Dictionary<T, U>.KeyCollection k, Action<T> a)
+    public static void ForEach<T, TU>(this Dictionary<T, TU>.KeyCollection k, Action<T> a)
     {
-        foreach (T t in k)
+        foreach (var t in k)
         {
             a(t);
         }
     }
 
-    public static void ForEach<T, U>(this Dictionary<T, U>.ValueCollection v, Action<U> a)
+    public static void ForEach<T, TU>(this Dictionary<T, TU>.ValueCollection v, Action<TU> a)
     {
-        foreach (U u in v)
+        foreach (var u in v)
         {
             a(u);
         }
     }
 
-    // https://stackoverflow.com/questions/1028136/random-entry-from-dictionary
+    /// <summary>
+    /// Returns an array of keys from a dictionary in a random order.
+    /// </summary>
+    /// <typeparam name="TKey">The type of the dictionary keys.</typeparam>
+    /// <typeparam name="TValue">The type of the dictionary values.</typeparam>
+    /// <param name="source">The dictionary to shuffle.</param>
+    /// <returns>An array of keys in a random order.</returns>
     public static TKey[] Shuffle<TKey, TValue>(this Dictionary<TKey, TValue> source)
     {
-        System.Random r = new System.Random();
+        var r = new Random();
 
-        TKey[] wviTKey = new TKey[source.Count];
+        var wviTKey = new TKey[source.Count];
 
         source.Keys.CopyTo(wviTKey, 0);
 
-        for (int i = wviTKey.Length; i > 1; i--)
+        for (var i = wviTKey.Length; i > 1; i--)
         {
-            int k = r.Next(i);
+            var k = r.Next(i);
 
-            TKey temp = wviTKey[k];
-
-            wviTKey[k] = wviTKey[i - 1];
-
-            wviTKey[i - 1] = temp;
+            (wviTKey[k], wviTKey[i - 1]) = (wviTKey[i - 1], wviTKey[k]);
         }
 
         return wviTKey;

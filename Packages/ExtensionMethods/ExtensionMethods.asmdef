@@ -5,14 +5,7 @@
         "GUID:a1acff3c9e1010c4d96017b8c3fdfb7f",
         "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
-    "includePlatforms": [
-        "Android",
-        "Editor",
-        "WSA",
-        "WebGL",
-        "WindowsStandalone32",
-        "WindowsStandalone64"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
@@ -25,22 +18,22 @@
         {
             "name": "com.unity.modules.ai",
             "expression": "",
-            "define": "UNITY_AI_MODULE"
+            "define": "UNITY_AI"
         },
         {
             "name": "com.dentedpixel.leantween",
             "expression": "",
-            "define": "LEANTWEEN_MODULE"
+            "define": "LEANTWEEN"
         },
         {
             "name": "com.unity.timeline",
             "expression": "",
-            "define": "TIMELINE_MODULE"
+            "define": "TIMELINE"
         },
         {
             "name": "com.unity.textmeshpro",
             "expression": "",
-            "define": "TMP_MODULE"
+            "define": "TMP"
         }
     ],
     "noEngineReferences": false

@@ -1,10 +1,9 @@
-﻿#if TIMELINE_MODULE
+﻿#if TIMELINE
 
 using UnityEngine.Playables;
 
 public static class PlayableDirectorExtensions
 {
-
     public static void TruePlay(this PlayableDirector director)
     {
         director.Stop();
@@ -20,6 +19,5 @@ public static class PlayableDirectorExtensions
 
         director.Evaluate();
     }
-
 }
 #endif

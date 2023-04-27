@@ -274,7 +274,7 @@ public static class VectorsExtensions
 
     public static bool Approximately(this Vector3 a, Vector3 b)
     {
-        return a.sqrMagnitude.RoundToInt().Equals(b.sqrMagnitude.RoundToInt());
+        return a.sqrMagnitude.Round().Equals(b.sqrMagnitude.Round());
     }
 
     public static Vector3 GetDirection(this Vector3 v, Vector3 target)
