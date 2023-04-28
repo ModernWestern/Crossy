@@ -1,12 +1,13 @@
 {
   "name": "modernwestern.extensionmethods",
-  "displayName": "Extension Methods",
+  "displayName": "ModernWestern",
   "version": "1.0.0",
   "description": "Utils",
   "keywords": [
     "Utils",
     "Exetnsion",
-    "Methods"
+    "Methods",
+    "Tools"
   ],
   "category": "Tool",
   "type": "tool"

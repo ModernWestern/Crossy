@@ -1,10 +1,11 @@
+using System.Linq;
 using UnityEngine;
 
 public static class ColorExtensions
 {
     public static Color[] ToColor(this Color32[] colors)
     {
-        return colors.ConvertAll(c => (Color)c);
+        return colors.ConvertAll(c => (Color)c).ToArray();
     }
 
     public static bool IsDefault(this Color color)

@@ -37,7 +37,7 @@ public class Life : MonoBehaviour
 
             if (transform.GetChildren().All(heart => !heart.gameObject.activeInHierarchy))
             {
-                transform.GetChildren().Last().gameObject.SetActive(true);
+                transform.GetLastChildrenAs<GameObject>()?.SetActive(true);
 
                 playerEvents.GameOver(false);
             }

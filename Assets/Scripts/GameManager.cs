@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -26,4 +27,12 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0;
     }
+    
+#if UNITY_EDITOR && !UNITY_WEBGL
+
+    private void Update()
+    {
+        Shader.SetGlobalVector(Constants.Light, customLight);
+    }
+#endif
 }

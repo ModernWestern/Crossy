@@ -161,7 +161,7 @@
       }
     },
     "modernwestern.extensionmethods": {
-      "version": "file:ExtensionMethods",
+      "version": "file:ModernWestern",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
