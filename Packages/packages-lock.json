@@ -160,7 +160,7 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "modernwestern.extensionmethods": {
+    "modernwestern.modernwestern.modernwestern-library": {
       "version": "file:ModernWestern",
       "depth": 0,
       "source": "embedded",

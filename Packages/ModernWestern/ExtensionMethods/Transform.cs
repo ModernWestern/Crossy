@@ -4,26 +4,68 @@ using System.Collections.Generic;
 
 public static class TransformExtensions
 {
+    /// <summary>
+    /// Returns an array of the immediate children of the specified Transform.
+    /// </summary>
+    /// <param name="transform">The parent Transform.</param>
+    /// <returns>An array of the immediate children of the specified Transform.</returns>
     public static Transform[] GetChildren(this Transform transform)
     {
         return transform.Cast<Transform>().ToArray();
     }
-    
+
+    /// <summary>
+    /// Returns the last immediate child of the specified Transform, or null if it has no children.
+    /// </summary>
+    /// <param name="transform">The parent Transform.</param>
+    /// <returns>The last immediate child of the specified Transform, or null if it has no children.</returns>
     public static Transform GetLastChildren(this Transform transform)
     {
         return transform.Cast<Transform>().LastOrDefault();
     }
 
-    public static IEnumerable<T> GetChildrenAs<T>(this Transform transform)
+    /// <summary>
+    /// Returns an array of the immediate child GameObjects of the specified Transform.
+    /// </summary>
+    /// <param name="transform">The parent Transform.</param>
+    /// <returns>An array of the immediate child GameObjects of the specified Transform.</returns>
+    public static GameObject[] GetChildrenAsGameObjects(this Transform transform)
     {
-        return transform.GetChildren().ConvertAll(children => children.TryGetComponent(out T component) ? component : default);
-    }
-    
-    public static T GetLastChildrenAs<T>(this Transform transform)
-    {
-        return transform.GetChildren().ConvertAll(children => children.TryGetComponent(out T component) ? component : default).LastOrDefault();
+        return transform.GetChildren().ConvertAll(child => child.gameObject).ToArray();
     }
 
+    /// <summary>
+    /// Returns an IEnumerable of the immediate child components of the specified Transform that are of the specified type T.
+    /// </summary>
+    /// <typeparam name="T">The type of component to search for.</typeparam>
+    /// <param name="transform">The parent Transform.</param>
+    /// <returns>An IEnumerable of the immediate child components of the specified Transform that are of the specified type T.</returns>
+    public static IEnumerable<T> GetChildrenAs<T>(this Transform transform)
+    {
+        return transform.GetChildren().ConvertAll(child => child.TryGetComponent(out T component) ? component : default);
+    }
+
+    /// <summary>
+    /// Returns the last immediate child of the specified Transform that has the specified component type.
+    /// </summary>
+    /// <typeparam name="T">The type of the component to search for.</typeparam>
+    /// <param name="transform">The parent Transform.</param>
+    /// <returns>The last immediate child of the specified Transform that has the specified component type.</returns>
+    public static T GetLastChildrenAs<T>(this Transform transform)
+    {
+        return transform.GetChildren().ConvertAll(child => child.TryGetComponent(out T component) ? component : default).LastOrDefault();
+    }
+
+    /// <summary>
+    /// Returns the first active child transform of the given parent transform.
+    /// </summary>
+    /// <param name="transform">The parent transform to search in.</param>
+    /// <returns>The first active child transform or null if none found.</returns>
+    /// <example>
+    /// <code>
+    /// Transform firstActiveChild = transform.GetFirstActiveChild();
+    /// </code>
+    /// </example>
     public static Transform GetFirstActiveChild(this Transform transform)
     {
         var child = transform.GetChildren().FirstOrDefault(child =>
@@ -36,6 +78,14 @@ public static class TransformExtensions
         return child;
     }
 
+    /// <summary>
+    /// Attempts to get the first component of type T in the children of the transform.
+    /// </summary>
+    /// <typeparam name="T">The type of the component to get.</typeparam>
+    /// <param name="transform">The transform to search for the component.</param>
+    /// <param name="component">The component found.</param>
+    /// <param name="includeInactive">Should inactive children be included in the search?</param>
+    /// <returns>True if the component was found, false otherwise.</returns>
     public static bool TryGetComponentInChildren<T>(this Transform transform, out T component, bool includeInactive = false)
     {
         component = transform.GetComponentInChildren<T>(includeInactive);
@@ -43,12 +93,21 @@ public static class TransformExtensions
         return component is { };
     }
 
+    /// <summary>
+    /// Attempts to get all components of type T in the child objects of the specified transform, and returns the results in an out parameter.
+    /// </summary>
+    /// <typeparam name="T">The type of the components to retrieve.</typeparam>
+    /// <param name="transform">The transform whose child objects are to be searched.</param>
+    /// <param name="components">If components of type T are found, returns an array containing those components; otherwise, returns an empty array.</param>
+    /// <param name="includeInactive">If true, also include inactive child objects in the search.</param>
+    /// <returns>True if components of type T are found in the child objects, false otherwise.</returns>
     public static bool TryGetComponentsInChildren<T>(this Transform transform, out T[] components, bool includeInactive = false)
     {
         components = transform.GetComponentsInChildren<T>(includeInactive);
-        
+
         return components is { Length: > 0 };
     }
+
 
     // public static void FromWorldCoordinatesLookAt(this Transform transform, Vector3 target)
     // {

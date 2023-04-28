@@ -17,10 +17,7 @@ public class Life : MonoBehaviour
 
     public void SetHearts()
     {
-        transform.GetChildren().ForEach((i, heart) =>
-        {
-            heart.gameObject.SetActive(i < settings.lifes);
-        });
+        transform.GetChildren().ForEach((i, heart) => { heart.gameObject.SetActive(i < settings.lifes); });
     }
 
     private void OnDamage()
@@ -37,7 +34,7 @@ public class Life : MonoBehaviour
 
             if (transform.GetChildren().All(heart => !heart.gameObject.activeInHierarchy))
             {
-                transform.GetLastChildrenAs<GameObject>()?.SetActive(true);
+                transform.GetLastChildren()?.gameObject.SetActive(true);
 
                 playerEvents.GameOver(false);
             }
