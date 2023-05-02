@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "a401883ecccacf839e9b3b03c062a7760e82a899"
     },
+    "com.modernwestern.library": {
+      "version": "https://github.com/ModernWestern/unity.modernwestern.library-package.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "31d54dbd32d0446b9f5cb552c29a91cde67aac3d"
+    },
     "com.unity.burst": {
       "version": "1.8.2",
       "depth": 1,
@@ -159,12 +166,6 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
-    },
-    "modernwestern.modernwestern.modernwestern-library": {
-      "version": "file:ModernWestern",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

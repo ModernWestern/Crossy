@@ -12,13 +12,13 @@ public class Pool
 
     public ObjectType type;
 
-    private Queue<FroggerPoolObject> queue = new Queue<FroggerPoolObject>();
+    private Queue<FroggerPoolObject> queue = new();
 
     public void Populate()
     {
         var length = amount;
 
-        for (int i = 0; i < length; i++)
+        for (var i = 0; i < length; i++)
         {
             var obj = Object.Instantiate(prefab, container);
 
@@ -34,11 +34,11 @@ public class Pool
 
     /// <summary>
     /// Removes and returns the object at the beginning of the pool,
-    /// if the pool has not objects availables it returns null.
+    /// if the pool has not objects available it returns null.
     /// </summary>
     public FroggerPoolObject Shift(Transform parent)
     {
-        if (queue.Count != 0 && queue.Dequeue() is FroggerPoolObject obj)
+        if (queue.Count != 0 && queue.Dequeue() is { } obj)
         {
             obj.transform.SetParent(parent);
 
