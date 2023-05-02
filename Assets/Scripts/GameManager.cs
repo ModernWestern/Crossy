@@ -7,16 +7,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameSettings settings;
 
-    [SerializeField] private Vector3 customLight;
-
-
     void Awake()
     {
 #if UNITY_EDITOR && !UNITY_WEBGL
 
         Application.targetFrameRate = 60;
 #endif
-        Shader.SetGlobalVector(Constants.Light, customLight);
+        Shader.SetGlobalVector(Constants.Light, Vector3.one / 2);
+        
+        Shader.SetGlobalColor(Constants.Tint, Color.white);
 
         playerEvents.OnGameOver += OnGameOver;
     }
@@ -27,12 +26,11 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0;
     }
-    
-#if UNITY_EDITOR && !UNITY_WEBGL
 
-    private void Update()
+    private void OnDestroy()
     {
-        Shader.SetGlobalVector(Constants.Light, customLight);
+        Shader.SetGlobalVector(Constants.Light, Vector3.one / 2);
+
+        Shader.SetGlobalColor(Constants.Tint, Color.white);
     }
-#endif
 }

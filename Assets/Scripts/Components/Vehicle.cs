@@ -1,12 +1,29 @@
+using System;
 using UnityEngine;
 
 public class Vehicle : FroggerPoolObject
 {
+    private static Action<bool> OnLightsSetActive;
+
     [SerializeField] private float speed = 1f;
+
+    [SerializeField] private GameObject lights;
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        OnLightsSetActive += LightsSetActive;
+    }
 
     private void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime, Space.Self);
+        transform.Translate(Vector3.right * (speed * Time.deltaTime), Space.Self);
+    }
+
+    private void LightsSetActive(bool value)
+    {
+        lights.SetActive(value);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,4 +33,6 @@ public class Vehicle : FroggerPoolObject
             other.GetComponent<Player>().SetDamage();
         }
     }
+
+    public static void SetActiveLights(bool value) => OnLightsSetActive?.Invoke(value);
 }

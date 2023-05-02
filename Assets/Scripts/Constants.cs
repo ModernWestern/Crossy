@@ -2,5 +2,7 @@ using UnityEngine;
 
 public class Constants
 {
-    public static int Light = Shader.PropertyToID("_lightDirection");
+    public static readonly int Light = Shader.PropertyToID("_lightDirection");
+    
+    public static readonly int Tint = Shader.PropertyToID("_tint");
 }

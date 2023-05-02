@@ -12,6 +12,8 @@ public class GameSettings : ScriptableObject
 
     public TimeType timeType;
 
+    public bool autoStart;
+
     [Range(1, 6)]
     public int lifes = 4;
 
