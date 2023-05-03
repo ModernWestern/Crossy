@@ -1755,65 +1755,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clouds
       objectReference: {fileID: 0}
-    - target: {fileID: 1000014227749990, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_RootOrder
       value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99113846
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.11411987
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.06732665
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.0094025675
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 4000012464943430, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
@@ -2760,18 +2744,18 @@ MonoBehaviour:
     key0: {r: 0.125, g: 0.14473683, b: 0.25, a: 1}
     key1: {r: 0.30413225, g: 0.31735542, b: 0.4, a: 1}
     key2: {r: 1, g: 1, b: 1, a: 0}
-    key3: {r: 1, g: 0.98382413, b: 0.95147246, a: 0}
-    key4: {r: 0.3, g: 0.246432, b: 0.15120001, a: 0}
+    key3: {r: 0.9, g: 0.85499996, b: 0.81, a: 0}
+    key4: {r: 0.29803923, g: 0.28313726, b: 0.2682353, a: 0}
     key5: {r: 0.125, g: 0.14473683, b: 0.25, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0.1, g: 0.115789466, b: 0.2, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 5243
     ctime2: 32768
-    ctime3: 55705
-    ctime4: 58982
-    ctime5: 62258
-    ctime6: 0
+    ctime3: 49151
+    ctime4: 52428
+    ctime5: 55705
+    ctime6: 65535
     ctime7: 0
     atime0: 0
     atime1: 65535
@@ -2782,7 +2766,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 6
+    m_NumColorKeys: 7
     m_NumAlphaKeys: 2
 --- !u!1001 &2097718734
 PrefabInstance:

@@ -26,7 +26,7 @@ public class RainModule : MonoBehaviour
                 particle.gameObject.SetActive(false);
             }
 
-            var rain = value.Map(0, value <= 10 ? 10 : value, 0, 5);
+            var rain = value.Remap(0, value <= 10 ? 10 : value, 0, 5);
 
             switch (rain)
             {
@@ -68,7 +68,7 @@ public class RainModule : MonoBehaviour
         
         var module = particle.emission;
 
-        module.rateOverTime = emission.HasValue ? Mathf.CeilToInt(emission.Value.CurveMap(0, 5, 0, 1000, rainStrength)) : 1000;
+        module.rateOverTime = emission.HasValue ? Mathf.CeilToInt(emission.Value.RemapWithCurve(0, 5, 0, 1000, rainStrength)) : 1000;
 
         particle.Play(true);
     }

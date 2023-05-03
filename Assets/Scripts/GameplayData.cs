@@ -6,6 +6,8 @@ public class GameplayData
 {
     public readonly LocationData Location;
 
+    public readonly bool? IsDay;
+
     public GameplayData(string city,
                         string country,
                         float sunAltitude,
@@ -23,7 +25,8 @@ public class GameplayData
                         float clouds,
                         float rain,
                         string weatherDescription,
-                        DateTime time)
+                        DateTime time,
+                        bool? isDay)
     {
         Location.City = city;
         Location.Country = country;
@@ -43,6 +46,7 @@ public class GameplayData
         Location.Rain = rain;
         Location.WeatherDescription = weatherDescription.ToEnum<Weather.Description>();
         Location.Time = time;
+        IsDay = isDay;
     }
 
     public override string ToString()

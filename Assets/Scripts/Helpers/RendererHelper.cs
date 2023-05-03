@@ -6,28 +6,31 @@ public class RendererHelper : MonoBehaviour
 
     public virtual void Awake()
     {
-        AddEvents(transform);
+        SetEvents(transform);
     }
 
-    private void AddEvents(Transform transform)
+    private void SetEvents(Transform transform)
     {
         if (!transform.GetComponent<Renderer>())
         {
-            transform.GetChildren().BreakableForEach(() => added, child =>
-            {
-                AddEvents(child);
-            });
+            transform.GetChildren().BreakableForEach(() => added, SetEvents);
         }
         else
         {
-            if (transform != this.transform)
+            if (transform == this.transform)
             {
-                transform.gameObject.AddComponent<RendererEvents>().OnInvisible += OnBecameInvisible;
-
-                added = true;
+                return;
             }
+
+            transform.gameObject.AddComponent<RendererEvents>().OnInvisible += OnBecameInvisible;
+
+            transform.gameObject.AddComponent<RendererEvents>().OnVisible += OnBecameVisible;
+
+            added = true;
         }
     }
 
-    public virtual void OnBecameInvisible() { }
+    public virtual void OnBecameInvisible(){}
+
+    public virtual void OnBecameVisible(){}
 }

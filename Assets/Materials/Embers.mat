@@ -8,18 +8,23 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Embers
-  m_Shader: {fileID: -6465566751694194690, guid: fe16ae9cc6a6ed24e9439c67f95ce8e4, type: 3}
+  m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -92,11 +97,25 @@ Material:
     - Vector1_91DB8324: -1
     - Vector1_b1d07a1602c740f7a0a707aeb9219fe6: 3
     - Vector1_c7232c2ee10c41099fd4f461479c4a1c: 700
+    - _AlphaClip: 0
     - _AlphaTreshold: 1
+    - _Blend: 0
+    - _BlendOp: 0
     - _BumpScale: 1
+    - _CameraFadingEnabled: 0
+    - _CameraFarFadeDistance: 2
+    - _CameraNearFadeDistance: 1
+    - _ColorMode: 0
+    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DistortionBlend: 0.5
+    - _DistortionEnabled: 0
+    - _DistortionStrength: 1
+    - _DistortionStrengthScaled: 0.1
     - _DstBlend: 0
+    - _FlipbookBlending: 0
+    - _FlipbookMode: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -107,9 +126,14 @@ Material:
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _SampleGI: 0
     - _SmoothnessTextureChannel: 0
+    - _SoftParticlesEnabled: 0
+    - _SoftParticlesFarFadeDistance: 1
+    - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Surface: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
@@ -118,9 +142,13 @@ Material:
     - Vector2_5fcbbd25833344ed879a54872ca45220: {r: 1, g: -0.2, b: 1, a: 1}
     - Vector2_7eb82262d78e4e23be5622d88b25c9d0: {r: 0.3, g: 1, b: 0, a: 0}
     - Vector2_f6e4a0daa0d84f8084b7471cbd634989: {r: 3, g: 0.3, b: 0, a: 0}
+    - _BaseColor: {r: 0.9058824, g: 0.04705883, b: 0.3647059, a: 1}
+    - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
+    - _CameraFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.9058824, g: 0.04705883, b: 0.3647059, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _Tiiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2873702787288979049

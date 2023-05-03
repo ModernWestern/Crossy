@@ -29,13 +29,14 @@ public class ModulesManager : MonoBehaviour
             buttons.Populate(data.GetCitiesSortedByTime);
 
             api = data.api;
+            
         }, completed));
 
-        buttons.OnCityChange += (city, isDay) =>
+        buttons.OnCityChange += city =>
         {
             DynamicWeatherController.Fetch(this, city, api, data =>
             {
-                switch (isDay)
+                switch (data.IsDay)
                 {
                     case false:
                         astro.Position = new Vector3(data.Location.Moon.Altitude, data.Location.Moon.Azimuth, data.Location.Moon.Distance);
@@ -48,7 +49,7 @@ public class ModulesManager : MonoBehaviour
                         break;
 
                     case true:
-                        astro.Position = Vector3.one / 2;
+                        astro.Position = new Vector3(data.Location.Sun.Altitude, data.Location.Sun.Azimuth, data.Location.Sun.Distance);
                         Vehicle.SetActiveLights(true);
                         break;
                 }
@@ -63,6 +64,8 @@ public class ModulesManager : MonoBehaviour
 
                 rain.OneHour = data.Location.Rain;
 
+                clouds.IsDay = data.IsDay;
+
                 gameplayData = data;
 
 #if UNITY_EDITOR
@@ -74,15 +77,4 @@ public class ModulesManager : MonoBehaviour
             clock.City = city;
         };
     }
-
-    // public void SetSunPosition(Transform directionalLight, float latitude, float longitude, DateTime time)
-    // {
-    //     var sunPosition = SunCalc.GetPosition(latitude, longitude, time);
-    //
-    //     var azimuth = sunPosition.y - 180;
-    //
-    //     var altitude = sunPosition.x;
-    //
-    //     directionalLight.rotation = Quaternion.Euler(altitude, azimuth, 0);
-    // }
 }

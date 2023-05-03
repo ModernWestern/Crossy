@@ -1,20 +1,20 @@
 using UnityEngine;
 
-public class Player : FroggerObject
+public class Player : PoolObject
 {
-    const string Finish = "Finish";
+    private const string Finish = "Finish";
 
-    const string Trunk = "Trunk";
+    private const string Trunk = "Trunk";
 
-    const string Water = "Water";
+    private const string Water = "Water";
 
     public PlayerEvents Events { private get; set; }
 
-    [SerializeField] private ParticleSystem Embers;
+    [SerializeField] private ParticleSystem embers;
 
-    private Vector3 defaultPosition = new Vector3(-3, 1, 0);
+    private Vector3 defaultPosition = new(-3, 1, 0);
 
-    private LTDescr punch;
+    private LTDescr tween;
 
     private void OnEnable()
     {
@@ -64,7 +64,7 @@ public class Player : FroggerObject
     {
         Events?.Damage();
 
-        Embers.Play();
+        embers.Play();
 
         OnEnable();
     }
@@ -88,22 +88,24 @@ public class Player : FroggerObject
 
     public void Animation(bool loop = false)
     {
-        if (punch != null)
+        if (tween != null)
         {
-            LeanTween.cancel(gameObject, punch.uniqueId);
+            LeanTween.cancel(gameObject, tween.uniqueId);
 
             transform.localScale = Vector3.one;
 
-            punch = null;
+            tween = null;
         }
 
-        punch = LeanTween.scaleY(gameObject, 0.9f, 1).setEase(LeanTweenType.punch).setIgnoreTimeScale(true);
+        tween = LeanTween.scaleY(gameObject, 0.9f, 1).setEase(LeanTweenType.punch).setIgnoreTimeScale(true);
 
-        if (loop)
+        if (!loop)
         {
-            punch.setLoopPingPong();
-
-            punch.time = 2;
+            return;
         }
+
+        tween.setLoopPingPong();
+
+        tween.time = 2;
     }
 }

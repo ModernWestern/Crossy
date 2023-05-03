@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public class FroggerPoolObject : FroggerObject
+public class PoolObject : RendererHelper
 {
-    public event Action<FroggerPoolObject> OnInvisible;
+    public event Action<PoolObject> OnInvisible;
 
     public Vector3 Position
     {

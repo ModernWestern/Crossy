@@ -54,7 +54,8 @@ public static class DynamicWeatherController
                                         wd.clouds?.all ?? 0,
                                         wd.rain?.oneHour ?? 0,
                                         wd.Weather.description,
-                                        DateTime.UtcNow.AddHours(city.gmt));
+                                        DateTime.UtcNow.AddHours(city.gmt),
+                                        city.IsDay);
 
                 completed?.Invoke(data);
             }));

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Trunk : FroggerPoolObject 
+public class Trunk : PoolObject 
 {
     [SerializeField] private float speed = 1f;
 

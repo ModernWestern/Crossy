@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class CityButtonsModule : MonoBehaviour
 {
-    public event Action<City, bool?> OnCityChange;
+    public event Action<City> OnCityChange;
 
     [SerializeField] private Transform buttons;
 
@@ -45,7 +45,7 @@ public class CityButtonsModule : MonoBehaviour
 
             button.GetComponentInChildren<TMP_Text>().text = cityName;
 
-            button.onClick.AddListener(() => OnCityChange?.Invoke(city, city.IsDay));
+            button.onClick.AddListener(() => OnCityChange?.Invoke(city));
         }
 
         isPopulated = true;

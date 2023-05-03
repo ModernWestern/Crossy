@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Vehicle : FroggerPoolObject
+public class Vehicle : PoolObject
 {
     private static Action<bool> OnLightsSetActive;
 
