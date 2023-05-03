@@ -1751,6 +1751,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 172509917, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
+      propertyPath: day.a
+      value: 0.4509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 172509917, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
+      propertyPath: mid.a
+      value: 0.4509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 172509917, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
+      propertyPath: night.a
+      value: 0.4509804
+      objectReference: {fileID: 0}
     - target: {fileID: 1000010237739742, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_Name
       value: Clouds

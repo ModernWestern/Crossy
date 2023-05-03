@@ -11,10 +11,15 @@ public class Player : PoolObject
     public PlayerEvents Events { private get; set; }
 
     [SerializeField] private ParticleSystem embers;
-
+ 
     private Vector3 defaultPosition = new(-3, 1, 0);
 
     private LTDescr tween;
+
+    private void Start()
+    {
+        Events.OnDamage += () => Debug.Log("Awwwwwwwww!");
+    }
 
     private void OnEnable()
     {
@@ -29,7 +34,7 @@ public class Player : PoolObject
         {
             transform.eulerAngles = Vector3.up * 180;
 
-            Events?.Finish();
+            Events.Finish();
 
             Events = null;
         }
@@ -58,11 +63,9 @@ public class Player : PoolObject
 
     public override void OnBecameInvisible() => SetDamage();
 
-    private void OnDisable() => Events?.CleanAll();
-
     public void SetDamage()
     {
-        Events?.Damage();
+        Events.Damage();
 
         embers.Play();
 

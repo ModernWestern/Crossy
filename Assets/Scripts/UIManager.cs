@@ -1,4 +1,5 @@
 using UnityEngine;
+using ModernWestern;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,8 +12,6 @@ public class UIManager : MonoBehaviour
         playerEvents.OnGameOver += value =>
         {
             gameoverPanels[value ? 0 : 1].SetActive(true, 1.5f, LeanTweenType.easeInOutSine);
-
-            Debug.Log(value);
         };
     }
 }
