@@ -1,24 +1,48 @@
+using System;
+using ModernWestern;
+using Newtonsoft.Json.Converters;
 using UnityEngine;
 
 public class Player : PoolObject
 {
-    private const string Finish = "Finish";
+    private const string Water = "Water";
 
     private const string Trunk = "Trunk";
 
-    private const string Water = "Water";
+    private const string Finish = "Finish";
+
+    private static readonly int IgnoreTint = Shader.PropertyToID("_IgnoreTint");
 
     public PlayerEvents Events { private get; set; }
 
+    [SerializeField] private MeshRenderer mesh;
+
     [SerializeField] private ParticleSystem embers;
- 
+
+    private static Action<bool?> OnNightBody;
+
     private Vector3 defaultPosition = new(-3, 1, 0);
 
     private LTDescr tween;
 
-    private void Start()
+    public override void Awake()
     {
-        Events.OnDamage += () => Debug.Log("Awwwwwwwww!");
+        base.Awake();
+
+        OnNightBody += NightBody;
+    }
+    public static void IsDay(bool? value) => OnNightBody?.Invoke(value);
+
+    private void NightBody(bool? value)
+    {
+        if (value.HasValue)
+        {
+            mesh.materials.ForEach(material => material.SetFloat(IgnoreTint, value.Value ? 0 : 1));
+        }
+        else
+        {
+            mesh.materials.ForEach(material => material.SetFloat(IgnoreTint, 0));
+        }
     }
 
     private void OnEnable()
@@ -61,8 +85,6 @@ public class Player : PoolObject
         }
     }
 
-    public override void OnBecameInvisible() => SetDamage();
-
     public void SetDamage()
     {
         Events.Damage();
@@ -71,6 +93,8 @@ public class Player : PoolObject
 
         OnEnable();
     }
+
+    public override void OnBecameInvisible() => SetDamage();
 
     public void Up() => Movement(Vector3.forward, Vector3.zero);
 

@@ -812,15 +812,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4146221279991868056, guid: 62cec06ebdb8d8a41bda34a9ceaf5a6c, type: 3}
       propertyPath: success.b
-      value: 0.645
+      value: 0.6484716
       objectReference: {fileID: 0}
     - target: {fileID: 4146221279991868056, guid: 62cec06ebdb8d8a41bda34a9ceaf5a6c, type: 3}
       propertyPath: success.g
-      value: 0.45149997
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4146221279991868056, guid: 62cec06ebdb8d8a41bda34a9ceaf5a6c, type: 3}
       propertyPath: success.r
-      value: 0.46850443
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7126201990950448049, guid: 62cec06ebdb8d8a41bda34a9ceaf5a6c, type: 3}
       propertyPath: m_AnchorMax.y

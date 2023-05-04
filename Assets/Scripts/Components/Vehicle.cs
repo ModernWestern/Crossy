@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Vehicle : PoolObject
 {
-    private static Action<bool> OnLightsSetActive;
+    private static Action<bool?> OnLightsSetActive;
 
     [SerializeField] private float speed = 1f;
 
@@ -21,9 +21,9 @@ public class Vehicle : PoolObject
         transform.Translate(Vector3.right * (speed * Time.deltaTime), Space.Self);
     }
 
-    private void LightsSetActive(bool value)
+    private void LightsSetActive(bool? value)
     {
-        lights.SetActive(value);
+        lights.SetActive(!value ?? false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,5 +34,5 @@ public class Vehicle : PoolObject
         }
     }
 
-    public static void SetActiveLights(bool value) => OnLightsSetActive?.Invoke(value);
+    public static void SetActiveLights(bool? value) => OnLightsSetActive?.Invoke(value);
 }

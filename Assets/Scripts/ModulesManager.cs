@@ -29,30 +29,24 @@ public class ModulesManager : MonoBehaviour
             buttons.Populate(data.GetCitiesSortedByTime);
 
             api = data.api;
-            
         }, completed));
 
         buttons.OnCityChange += city =>
         {
             DynamicWeatherController.Fetch(this, city, api, data =>
             {
-                switch (data.IsDay)
+                Player.IsDay(data.IsDay);
+
+                Vehicle.SetActiveLights(data.IsDay);
+
+                astro.Position = data.IsDay switch
                 {
-                    case false:
-                        astro.Position = new Vector3(data.Location.Moon.Altitude, data.Location.Moon.Azimuth, data.Location.Moon.Distance);
-                        Vehicle.SetActiveLights(true);
-                        break;
+                    true => new Vector3(data.Location.Sun.Altitude, data.Location.Sun.Azimuth, data.Location.Sun.Distance),
 
-                    case null:
-                        astro.Position = new Vector3(data.Location.Sun.Altitude, data.Location.Sun.Azimuth, data.Location.Sun.Distance);
-                        Vehicle.SetActiveLights(false);
-                        break;
+                    null => new Vector3(data.Location.Sun.Altitude, data.Location.Sun.Azimuth, data.Location.Sun.Distance),
 
-                    case true:
-                        astro.Position = new Vector3(data.Location.Sun.Altitude, data.Location.Sun.Azimuth, data.Location.Sun.Distance);
-                        Vehicle.SetActiveLights(true);
-                        break;
-                }
+                    false => new Vector3(data.Location.Moon.Altitude, data.Location.Moon.Azimuth, data.Location.Moon.Distance)
+                };
 
                 astro.Shade = Tuple.Create(data.Location.WeatherDescription, data.Location.Time.Hour);
 
