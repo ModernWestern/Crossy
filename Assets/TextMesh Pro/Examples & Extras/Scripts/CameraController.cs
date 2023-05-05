@@ -127,7 +127,7 @@ namespace TMPro.Examples
         {
             moveVector = Vector3.zero;
 
-            // Check Mouse Wheel Input prior to RetrievesFromPool Key so we can apply multiplier on RetrievesFromPool for Scrolling
+            // Check Mouse Wheel Input prior to Shift Key so we can apply multiplier on Shift for Scrolling
             mouseWheel = Input.GetAxis("Mouse ScrollWheel");
 
             float touchCount = Input.touchCount;

@@ -170,7 +170,7 @@ namespace TMPro.Examples
                     }
                 }
 
-                // AddToPool changes into meshes
+                // Push changes into meshes
                 for (int i = 0; i < textInfo.meshInfo.Length; i++)
                 {
                     textInfo.meshInfo[i].mesh.vertices = copyOfVertices[i];
