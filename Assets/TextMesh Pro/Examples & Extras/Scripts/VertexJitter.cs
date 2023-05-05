@@ -158,7 +158,7 @@ namespace TMPro.Examples
                     vertexAnim[i] = vertAnim;
                 }
 
-                // Push changes into meshes
+                // AddToPool changes into meshes
                 for (int i = 0; i < textInfo.meshInfo.Length; i++)
                 {
                     textInfo.meshInfo[i].mesh.vertices = textInfo.meshInfo[i].vertices;

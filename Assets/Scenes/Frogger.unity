@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3559bba981159734a946d718bef2a5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  events: {fileID: 11400000, guid: eaa9515327ff9884d9204df694253211, type: 2}
   astro: {fileID: 2094542745}
   rain: {fileID: 251037990}
   clouds: {fileID: 1226724498}
@@ -328,6 +329,66 @@ PrefabInstance:
     - target: {fileID: 198751418742502002, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
       propertyPath: ShapeModule.m_Scale.z
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[1].time
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[2].time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[3].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[1].value
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[2].value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[3].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[1].inSlope
+      value: 2.7419162
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[2].inSlope
+      value: 0.3091041
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[1].inWeight
+      value: 0.20905897
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[1].outSlope
+      value: 2.7419162
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[2].inWeight
+      value: 0.27058777
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[2].outSlope
+      value: 0.3091041
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[1].outWeight
+      value: 0.20776875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055879578475149527, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
+      propertyPath: rainStrength.m_Curve.Array.data[2].outWeight
+      value: 0.6481033
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38ace5e83509b8142a5db190188d9ca4, type: 3}
@@ -1732,6 +1793,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0e3f4bb98834643b37569a6d3c897f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 6622dcb4e1665b44f9aa8c4deeaa18b9, type: 2}
+  events: {fileID: 11400000, guid: eaa9515327ff9884d9204df694253211, type: 2}
   streams:
   - {fileID: 1543367893}
   - {fileID: 1842342066}
@@ -1751,18 +1814,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 172509917, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
-      propertyPath: day.a
-      value: 0.4509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 172509917, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
-      propertyPath: mid.a
-      value: 0.4509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 172509917, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
-      propertyPath: night.a
-      value: 0.4509804
-      objectReference: {fileID: 0}
     - target: {fileID: 1000010237739742, guid: fe69c79d384eb4f4f944d4ec253d357a, type: 3}
       propertyPath: m_Name
       value: Clouds
@@ -2628,6 +2679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d182c5a378c2aa146a75500f3f2cff43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 6622dcb4e1665b44f9aa8c4deeaa18b9, type: 2}
+  events: {fileID: 11400000, guid: eaa9515327ff9884d9204df694253211, type: 2}
   roads:
   - {fileID: 1447260354}
   - {fileID: 320015470}
@@ -2761,8 +2814,8 @@ MonoBehaviour:
     key5: {r: 0.125, g: 0.14473683, b: 0.25, a: 0}
     key6: {r: 0.1, g: 0.115789466, b: 0.2, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 5243
+    ctime0: 9175
+    ctime1: 11796
     ctime2: 32768
     ctime3: 49151
     ctime4: 52428

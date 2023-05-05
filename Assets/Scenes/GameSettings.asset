@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2149becac67cf2489633c933706eab3, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  spawnOnAwake: 1
+  startTimerOnAwake: 0
   goalsAmount: 5
   time: 60
   timeType: 0
-  autoStart: 0
   lifes: 3

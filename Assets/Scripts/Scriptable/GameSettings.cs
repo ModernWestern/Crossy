@@ -5,17 +5,15 @@ public class GameSettings : ScriptableObject
 {
     public bool GameOver { get; set; }
 
+    public bool spawnOnAwake, startTimerOnAwake;
+
     public int goalsAmount = 5;
 
-    [Tooltip("Time in seconds")]
-    public float time = 300;
+    [Tooltip("Time in seconds")] public float time = 300;
 
     public TimeType timeType;
 
-    public bool autoStart;
-
-    [Range(1, 6)]
-    public int lifes = 4;
+    [Range(1, 6)] public int lifes = 4;
 
     private void OnEnable()
     {

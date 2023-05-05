@@ -12,6 +12,7 @@ public class RainModule : MonoBehaviour
         foreach (var particle in particles)
         {
             particle.Stop(true);
+            
             particle.gameObject.SetActive(false);
         }
     }
@@ -23,6 +24,7 @@ public class RainModule : MonoBehaviour
             foreach (var particle in particles)
             {
                 particle.Stop(true);
+                
                 particle.gameObject.SetActive(false);
             }
 
@@ -33,20 +35,24 @@ public class RainModule : MonoBehaviour
                 case <= 1 and > 0:
                     Play(ref particles[0], rain);
                     break;
+                
                 case <= 2 and >= 1:
                     Play(ref particles[0], rain);
                     Play(ref particles[1], rain);
                     break;
+                
                 case <= 3 and >= 2:
                     Play(ref particles[0], rain);
                     Play(ref particles[1], rain);
                     Play(ref particles[2], rain / 2);
                     break;
+                
                 case <= 4 and >= 3:
                     Play(ref particles[0], rain);
                     Play(ref particles[1], rain);
                     Play(ref particles[2], rain);
                     break;
+                
                 case >= 4:
                     Play(ref particles[0]);
                     Play(ref particles[1]);

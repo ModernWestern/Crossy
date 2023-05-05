@@ -15,9 +15,9 @@ public class PoolController : MonoBehaviour
     {
         pools.ForEach(pool => pool.Populate());
 
-        PushStaticHelper += (type, obj) => pools.LastOrDefault(pool => pool.type == type)?.Push(obj);
+        PushStaticHelper += (type, obj) => pools.LastOrDefault(pool => pool.type == type)?.AddToPool(obj);
 
-        ShiftStaticHelper += (type, parent) => pools.LastOrDefault(pool => pool.type == type)?.Shift(parent);
+        ShiftStaticHelper += (type, parent) => pools.LastOrDefault(pool => pool.type == type)?.RetrievesFromPool(parent);
     }
 
     public static void Push(ObjectType type, PoolObject obj)
@@ -28,6 +28,16 @@ public class PoolController : MonoBehaviour
     public static PoolObject Shift(ObjectType type)
     {
         return ShiftStaticHelper?.Invoke(type, null);
+    }
+
+    public static T Shift<T>(ObjectType type) where T : PoolObject
+    {
+        if (ShiftStaticHelper?.Invoke(type, null) is { } obj)
+        {
+            return obj as T;
+        }
+
+        return null;
     }
 
     public static PoolObject Shift(ObjectType type, Transform parent)

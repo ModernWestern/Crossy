@@ -1,11 +1,9 @@
 using UnityEngine;
 
-public class Trunk : PoolObject 
+public class Trunk : MovableObject
 {
-    [SerializeField] private float speed = 1f;
-
     private void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime, Space.Self);
+        transform.Translate(Vector3.right * (SpeedMultiplier * Time.deltaTime), Space.Self);
     }
 }

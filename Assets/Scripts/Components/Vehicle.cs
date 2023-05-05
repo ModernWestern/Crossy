@@ -1,11 +1,9 @@
 using System;
 using UnityEngine;
 
-public class Vehicle : PoolObject
+public class Vehicle : MovableObject
 {
     private static Action<bool?> OnLightsSetActive;
-
-    [SerializeField] private float speed = 1f;
 
     [SerializeField] private GameObject lights;
 
@@ -18,7 +16,7 @@ public class Vehicle : PoolObject
 
     private void Update()
     {
-        transform.Translate(Vector3.right * (speed * Time.deltaTime), Space.Self);
+        transform.Translate(Vector3.right * (SpeedMultiplier * Time.deltaTime), Space.Self);
     }
 
     private void LightsSetActive(bool? value)

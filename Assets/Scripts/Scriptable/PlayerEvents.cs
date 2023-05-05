@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Events", menuName = "ScriptableObjects/PlayerEvents", order = 0)]
 public class PlayerEvents : ScriptableObject
 {
+    public event Action<GameplayData> OnCityChange;
+
     public event Action OnDamage, OnFinish;
 
     public event Action<bool> OnGameOver;
@@ -14,6 +16,8 @@ public class PlayerEvents : ScriptableObject
 
     public void GameOver(bool value) => OnGameOver?.Invoke(value);
 
+    public void CityChange(GameplayData value) => OnCityChange?.Invoke(value);
+
     public void CleanAll()
     {
         OnDamage = null;
@@ -21,5 +25,7 @@ public class PlayerEvents : ScriptableObject
         OnFinish = null;
 
         OnGameOver = null;
+
+        OnCityChange = null;
     }
 }

@@ -6,19 +6,23 @@ using System.Collections.Generic;
 
 public class ModulesManager : MonoBehaviour
 {
+    public PlayerEvents events;
+
+    [Header("Modules"), Space]
+    
     public AstroModule astro;
 
     public RainModule rain;
 
     public CloudsModule clouds;
 
-    [Header("UI Modules"), Space] public InputModule input;
+    [Header("UI Modules"), Space]
+    
+    public InputModule input;
 
     public CityButtonsModule buttons;
 
     public ClockModule clock;
-
-    private GameplayData gameplayData;
 
     private List<Api> api;
 
@@ -29,6 +33,7 @@ public class ModulesManager : MonoBehaviour
             buttons.Populate(data.GetCitiesSortedByTime);
 
             api = data.api;
+            
         }, completed));
 
         buttons.OnCityChange += city =>
@@ -59,12 +64,12 @@ public class ModulesManager : MonoBehaviour
                 rain.OneHour = data.Location.Rain;
 
                 clouds.IsDay = data.IsDay;
-
-                gameplayData = data;
-
+                
 #if UNITY_EDITOR
                 UDebug.ClearConsole();
 #endif
+                events.CityChange(data);
+                
                 Debug.Log(data);
             });
 

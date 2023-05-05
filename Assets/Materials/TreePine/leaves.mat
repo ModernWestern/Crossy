@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: leaves
-  m_Shader: {fileID: -6465566751694194690, guid: fe16ae9cc6a6ed24e9439c67f95ce8e4, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: db7df836d453e0c418dcb8a2a3ac3129, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -122,6 +122,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _IgnoreTint: 0
     - _LightAttenuation: 0.9
     - _Metallic: 0
     - _Mode: 0

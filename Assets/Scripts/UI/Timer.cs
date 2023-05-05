@@ -37,7 +37,7 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        if (!settings.autoStart)
+        if (!settings.startTimerOnAwake)
         {
             return;
         }

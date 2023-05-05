@@ -168,7 +168,7 @@ namespace TMPro.Examples
                     destinationColors32[vertexIndex + 3] = sourceColors32[vertexIndex + 3];
                 }
 
-                // Push changes into meshes
+                // AddToPool changes into meshes
                 for (int i = 0; i < textInfo.meshInfo.Length; i++)
                 {
                     //// Sort Quads based modified scale

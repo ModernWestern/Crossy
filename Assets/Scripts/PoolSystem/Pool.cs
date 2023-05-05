@@ -24,7 +24,7 @@ public class Pool
 
             obj.name = $"{type}_{i}";
 
-            obj.OnInvisible += Push;
+            obj.OnInvisible += AddToPool;
 
             obj.SetActive(false);
 
@@ -33,10 +33,11 @@ public class Pool
     }
 
     /// <summary>
-    /// Removes and returns the object at the beginning of the pool,
-    /// if the pool has not objects available it returns null.
+    /// Retrieves and activates the first PoolObject from the pool, sets its parent to the specified transform, and returns it.
     /// </summary>
-    public PoolObject Shift(Transform parent)
+    /// <param name="parent">The transform to set as the parent of the retrieved object.</param>
+    /// <returns>The retrieved object, or null if the pool is empty.</returns>
+    public PoolObject RetrievesFromPool(Transform parent)
     {
         if (queue.Count != 0 && queue.Dequeue() is { } obj)
         {
@@ -46,13 +47,15 @@ public class Pool
 
             return obj;
         }
-        else return null;
+
+        return null;
     }
 
     /// <summary>
-    /// Adds an object to the end of the pool.
+    /// Adds a PoolObject to the object pool, sets its parent to its container, deactivates it, and enqueues it for later use. If the PoolObject is already inactive, it is not added to the pool
     /// </summary>
-    public void Push(PoolObject obj)
+    /// <param name="obj">The PoolObject to add to the pool.</param>
+    public void AddToPool(PoolObject obj)
     {
         if (obj.gameObject.activeInHierarchy && obj.gameObject.activeSelf)
         {

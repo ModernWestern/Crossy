@@ -1,6 +1,5 @@
 using System;
 using ModernWestern;
-using Newtonsoft.Json.Converters;
 using UnityEngine;
 
 public class Player : PoolObject
@@ -31,18 +30,12 @@ public class Player : PoolObject
 
         OnNightBody += NightBody;
     }
+
     public static void IsDay(bool? value) => OnNightBody?.Invoke(value);
 
     private void NightBody(bool? value)
     {
-        if (value.HasValue)
-        {
-            mesh.materials.ForEach(material => material.SetFloat(IgnoreTint, value.Value ? 0 : 1));
-        }
-        else
-        {
-            mesh.materials.ForEach(material => material.SetFloat(IgnoreTint, 0));
-        }
+        mesh.materials.ForEach(material => material.SetFloat(IgnoreTint, value.HasValue ? value.Value ? 0 : 1 : 0));
     }
 
     private void OnEnable()
