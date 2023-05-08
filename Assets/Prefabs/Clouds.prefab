@@ -115,7 +115,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  day: {r: 1, g: 1, b: 1, a: 0.5019608}
+  day: {r: 1, g: 1, b: 1, a: 0.4509804}
   mid: {r: 1, g: 0.85, b: 0.7, a: 0.4509804}
   night: {r: 0.13266, g: 0.17224401, b: 0.22, a: 0.4509804}
 --- !u!1 &1000014227749990

@@ -15,8 +15,6 @@ public class TrunkSpawner : MonoBehaviour
 
     private Queue<Transform> points;
 
-    private float multiplier = 1;
-
     private bool zigzag;
 
     private void Start()
@@ -30,11 +28,9 @@ public class TrunkSpawner : MonoBehaviour
 
         events.OnCityChange += cityData =>
         {
-            var rain = cityData.Location.Rain;
+            // var rain = cityData.Location.Rain;
 
-            multiplier = rain.Remap(0f, rain <= 10f ? 10f : rain, 0.5f, 2.5f);
-
-            Debug.Log("Trunk: " + multiplier);
+            // rain.Remap(0f, rain <= 10f ? 10f : rain, 0.5f, 2.5f);
         };
         
         Debug.Log("Trunk Start");
@@ -46,14 +42,12 @@ public class TrunkSpawner : MonoBehaviour
 
         var trunkType = Random2.Value() ? ObjectType.TrunkShort : ObjectType.TrunkLarge;
 
-        var currentTrunk = PoolController.Shift<MovableObject>(trunkType);
+        var currentTrunk = PoolController.Shift(trunkType);
 
         if (!currentTrunk)
         {
             return;
         }
-
-        currentTrunk.SpeedMultiplier = multiplier;
         
         currentTrunk.Position = point.position;
 

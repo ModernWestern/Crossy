@@ -80,7 +80,10 @@ public class Player : PoolObject
 
     public void SetDamage()
     {
-        Events.Damage();
+        if (Events)
+        {
+            Events.Damage();
+        }
 
         embers.Play();
 

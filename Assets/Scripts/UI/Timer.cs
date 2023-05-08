@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
 
     [SerializeField] private GameSettings settings;
 
-    private Helpers.Timer timerRoutine;
+    private ModernWestern.Timer timerRoutine;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
                 timer.text = TimeSpan.FromSeconds(settings.time).ToString(Format);
             }
 
-            timerRoutine = new Helpers.Timer(settings.time, settings.timeType switch
+            timerRoutine = new ModernWestern.Timer(settings.time, settings.timeType switch
             {
                 TimeType.Backward => true,
                 _ => false

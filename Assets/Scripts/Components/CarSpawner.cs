@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using ModernWestern;
 using System.Collections.Generic;
 
 public class CarSpawner : MonoBehaviour
@@ -14,7 +15,9 @@ public class CarSpawner : MonoBehaviour
 
     private Queue<Transform> points;
 
-    private float multiplier = 1;
+    private GameplayData data;
+
+    private Loop loop;
 
     private void Start()
     {
@@ -24,16 +27,22 @@ public class CarSpawner : MonoBehaviour
         // One point for road
         points = new Queue<Transform>(roads.Select(road => road.GetChild(Random2.Value() ? 0 : 1)));
 
+        loop = new Loop(Random.Range(timeRange.x, timeRange.y), this);
+
         if (settings.spawnOnAwake)
         {
-            Spawn();
+            loop.Start(Spawn);
         }
 
         events.OnCityChange += cityData =>
         {
-            multiplier = cityData.IsDay.HasValue ? cityData.IsDay.Value ? 1f : 0.5f : 1f;
+            loop.Stop();
 
-            Debug.Log("Vehicle: " + multiplier);
+            data = cityData;
+
+            var randomTime = Random.Range(timeRange.x, timeRange.y);
+            //                                                                |     noon/dawn     |     night      |    day    | 
+            loop.Start(Spawn, cityData.IsDay.HasValue ? cityData.IsDay.Value ? 0.75f * randomTime : 4 * randomTime : randomTime);
         };
     }
 
@@ -43,20 +52,27 @@ public class CarSpawner : MonoBehaviour
 
         var vehicleType = (ObjectType)Random.Range(2, 5);
 
-        var currentVehicle = PoolController.Shift<MovableObject>(vehicleType);
+        var currentVehicle = PoolController.Shift(vehicleType);
 
         if (!currentVehicle)
         {
             return;
         }
-        
-        currentVehicle.SpeedMultiplier = multiplier;
-        
+
         currentVehicle.Position = point.position;
 
         currentVehicle.Rotation = point.rotation;
 
-        Invoke(nameof(Spawn), Random.Range(timeRange.x, timeRange.y));
+        if (data == null)
+        {
+            return;
+        }
+
+        loop.Stop();
+
+        var randomTime = Random.Range(timeRange.x, timeRange.y);
+        //                                                        |     noon/dawn     |     night      |    day    | 
+        loop.Start(Spawn, data.IsDay.HasValue ? data.IsDay.Value ? 0.75f * randomTime : 4 * randomTime : randomTime);
     }
 
     private Transform Point()
