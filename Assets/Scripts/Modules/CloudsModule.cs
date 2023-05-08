@@ -10,7 +10,7 @@ public class CloudsModule : MonoBehaviour
 
     private static readonly int _Speed = Shader.PropertyToID("_Speed");
 
-    private const float MaxSpeed = 15f; // 45km/h or 12.5m/s
+    private const float MaxSpeed = 17f; // 45km/h or 12.5m/s
 
     [SerializeField] private GameObject[] clouds;
 
@@ -50,7 +50,7 @@ public class CloudsModule : MonoBehaviour
                 material.SetFloat(_Speed, value.RemapWithCurve(0, MaxSpeed, -0.1f, -0.5f, cloudsSpeed));
             }
 
-            Shader.SetGlobalFloat(Constants.WindSpeed, value.RemapWithCurve(0, MaxSpeed, 0, 200, cloudsSpeed));
+            Shader.SetGlobalFloat(Constants.WindSpeed, value.RemapWithCurve(0, MaxSpeed, 10, 210, cloudsSpeed));
         }
     }
 
