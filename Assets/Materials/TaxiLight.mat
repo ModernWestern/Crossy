@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit
+  m_Name: TaxiLight
   m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -140,8 +140,8 @@ Material:
     - Vector2_5fcbbd25833344ed879a54872ca45220: {r: 1, g: -0.2, b: 1, a: 1}
     - Vector2_7eb82262d78e4e23be5622d88b25c9d0: {r: 0.3, g: 1, b: 0, a: 0}
     - Vector2_f6e4a0daa0d84f8084b7471cbd634989: {r: 3, g: 0.3, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 0.9153609, b: 0, a: 1}
-    - _Color: {r: 1, g: 0.9153609, b: 0, a: 1}
+    - _BaseColor: {r: 0, g: 0.809, b: 0.4066026, a: 1}
+    - _Color: {r: 0, g: 0.809, b: 0.4066026, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiiling: {r: 1, g: 1, b: 0, a: 0}

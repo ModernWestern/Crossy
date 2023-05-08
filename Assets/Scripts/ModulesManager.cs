@@ -8,17 +8,13 @@ public class ModulesManager : MonoBehaviour
 {
     public PlayerEvents events;
 
-    [Header("Modules"), Space]
-    
-    public AstroModule astro;
+    [Header("Modules"), Space] public AstroModule astro;
 
     public RainModule rain;
 
     public CloudsModule clouds;
 
-    [Header("UI Modules"), Space]
-    
-    public InputModule input;
+    [Header("UI Modules"), Space] public InputModule input;
 
     public CityButtonsModule buttons;
 
@@ -44,6 +40,8 @@ public class ModulesManager : MonoBehaviour
 
                 Vehicle.SetActiveLights(data.IsDay);
 
+                Trunk.SetRainAmount(data.Location.Rain);
+
                 astro.Position = data.IsDay switch
                 {
                     true => new Vector3(data.Location.Sun.Altitude, data.Location.Sun.Azimuth, data.Location.Sun.Distance),
@@ -64,12 +62,12 @@ public class ModulesManager : MonoBehaviour
                 rain.OneHour = data.Location.Rain;
 
                 clouds.IsDay = data.IsDay;
-                
+
 #if UNITY_EDITOR
                 UDebug.ClearConsole();
 #endif
                 events.CityChange(data);
-                
+
                 Debug.Log(data);
             });
 

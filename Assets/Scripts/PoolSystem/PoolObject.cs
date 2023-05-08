@@ -4,7 +4,9 @@ using UnityEngine;
 public class PoolObject : RendererHelper
 {
     public event Action<PoolObject> OnInvisible;
-    
+
+    public ObjectType Type { get; set; }
+
     public Vector3 Position
     {
         get => transform.localPosition;

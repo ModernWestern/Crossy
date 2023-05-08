@@ -22,6 +22,8 @@ public class Pool
         {
             var obj = Object.Instantiate(prefab, container);
 
+            obj.Type = type;
+
             obj.name = $"{type}_{i}";
 
             obj.OnInvisible += AddToPool;

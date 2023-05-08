@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 using ModernWestern;
 using System.Collections.Generic;
 
@@ -15,24 +15,25 @@ public class TrunkSpawner : MonoBehaviour
 
     private Queue<Transform> points;
 
+    private GameplayData data;
+
     private bool zigzag;
+
+    private Loop loop;
 
     private void Start()
     {
         points = new Queue<Transform>(streams.Select(road => road.GetChild((zigzag = !zigzag) ? 0 : 1)));
 
+        loop = new Loop(Random.Range(timeRange.x, timeRange.y), this);
+
         if (settings.spawnOnAwake)
         {
-            Spawn();
+            loop.Start(Spawn);
         }
 
-        events.OnCityChange += cityData =>
-        {
-            // var rain = cityData.Location.Rain;
+        events.OnCityChange += cityData => { data = cityData; };
 
-            // rain.Remap(0f, rain <= 10f ? 10f : rain, 0.5f, 2.5f);
-        };
-        
         Debug.Log("Trunk Start");
     }
 
@@ -42,18 +43,16 @@ public class TrunkSpawner : MonoBehaviour
 
         var trunkType = Random2.Value() ? ObjectType.TrunkShort : ObjectType.TrunkLarge;
 
-        var currentTrunk = PoolController.Shift(trunkType);
+        var currentTrunk = PoolController.Shift<Trunk>(trunkType);
 
         if (!currentTrunk)
         {
             return;
         }
-        
+
         currentTrunk.Position = point.position;
 
         currentTrunk.Rotation = point.rotation;
-        
-        Invoke(nameof(Spawn), Random.Range(timeRange.x, timeRange.y));
     }
 
     private Transform Point()

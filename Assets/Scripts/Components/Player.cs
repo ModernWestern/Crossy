@@ -1,6 +1,6 @@
 using System;
-using ModernWestern;
 using UnityEngine;
+using ModernWestern;
 
 public class Player : PoolObject
 {

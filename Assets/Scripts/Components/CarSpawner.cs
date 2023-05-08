@@ -42,7 +42,7 @@ public class CarSpawner : MonoBehaviour
 
             var randomTime = Random.Range(timeRange.x, timeRange.y);
             //                                                                |     noon/dawn     |     night      |    day    | 
-            loop.Start(Spawn, cityData.IsDay.HasValue ? cityData.IsDay.Value ? 0.75f * randomTime : 4 * randomTime : randomTime);
+            loop.Start(Spawn, cityData.IsDay.HasValue ? cityData.IsDay.Value ? 0.5f * randomTime : 4 * randomTime : randomTime);
         };
     }
 
@@ -50,7 +50,9 @@ public class CarSpawner : MonoBehaviour
     {
         var point = Point();
 
-        var vehicleType = (ObjectType)Random.Range(2, 5);
+        var randomCarType = Random.Range(2, 5);
+        //                                                                                                    |  noon/dawn  | night |    day     | 
+        var vehicleType = (ObjectType)(data == null ? randomCarType : data.IsDay.HasValue ? data.IsDay.Value ? randomCarType : 2 : randomCarType);
 
         var currentVehicle = PoolController.Shift(vehicleType);
 
@@ -63,16 +65,11 @@ public class CarSpawner : MonoBehaviour
 
         currentVehicle.Rotation = point.rotation;
 
-        if (data == null)
-        {
-            return;
-        }
-
         loop.Stop();
 
         var randomTime = Random.Range(timeRange.x, timeRange.y);
-        //                                                        |     noon/dawn     |     night      |    day    | 
-        loop.Start(Spawn, data.IsDay.HasValue ? data.IsDay.Value ? 0.75f * randomTime : 4 * randomTime : randomTime);
+        //                                                                                    |     noon/dawn     |     night      |    day    | 
+        loop.Start(Spawn, data == null ? randomTime : data.IsDay.HasValue ? data.IsDay.Value ? 0.5f * randomTime : 2 * randomTime : randomTime);
     }
 
     private Transform Point()
