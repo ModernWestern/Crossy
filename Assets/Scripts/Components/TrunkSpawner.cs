@@ -16,8 +16,6 @@ public class TrunkSpawner : MonoBehaviour
 
     private Queue<Transform> points;
 
-    private GameplayData data;
-
     private bool zigzag;
 
     private Loop loop;
@@ -33,9 +31,14 @@ public class TrunkSpawner : MonoBehaviour
             loop.Start(Spawn);
         }
 
-        events.OnCityChange += cityData => { data = cityData; };
+        events.OnCityChange += cityData =>
+        {
+            loop.Stop();
 
-        Debug.Log("Trunk Start");
+            var time = Random.Range(timeRange.x, timeRange.y);
+
+            loop.Start(Spawn, cityData.Location.Rain > 8 ? time * 0.5f : time);
+        };
     }
 
     public void Spawn()

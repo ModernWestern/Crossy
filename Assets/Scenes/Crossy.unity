@@ -2840,7 +2840,7 @@ MonoBehaviour:
   rain:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 0.2475, g: 0.33020717, b: 0.495, a: 1}
+    key1: {r: 0.39578822, g: 0.42856473, b: 0.49411765, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}

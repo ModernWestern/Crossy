@@ -28,7 +28,7 @@ public class RainModule : MonoBehaviour
                 particle.gameObject.SetActive(false);
             }
 
-            var rain = value.Remap(0, value <= 10 ? 10 : value, 0, 5);
+            var rain = value.Remap(0, value <= 12 ? 12 : value, 0, 5);
 
             switch (rain)
             {
@@ -61,7 +61,7 @@ public class RainModule : MonoBehaviour
                     break;
             }
 
-            Shader.SetGlobalFloat(Constants.Turbulence, value.Normalize(0, value <= 10 ? 10 : value));
+            Shader.SetGlobalFloat(Constants.Turbulence, value.Normalize(0, value <= 12 ? 12 : value));
         }
     }
 

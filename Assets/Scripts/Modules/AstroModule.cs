@@ -36,7 +36,7 @@ public class AstroModule : MonoBehaviour
     {
         set
         {
-            var rainCol = rain.Evaluate(value.Rain.Normalize(0, value.Rain <= 10 ? 10 : value.Rain));
+            var rainCol = rain.Evaluate(value.Rain.Normalize(0, value.Rain <= 12 ? 12 : value.Rain));
 
             var dayCol = day.Evaluate(((float)value.Hour).Normalize(0, 23));
 

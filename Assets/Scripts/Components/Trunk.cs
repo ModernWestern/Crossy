@@ -26,7 +26,7 @@ public class Trunk : PoolObject
 
     private void RainAmount(float value)
     {
-        deltaSpeed = speed * value.Remap(0f, value <= 10f ? 10f : value, 1, 8);
+        deltaSpeed = speed * value.Remap(0f, value <= 10f ? 10f : value, 1, 5);
     }
 
     public static void SetRainAmount(float value) => OnRainAmount?.Invoke(value);
