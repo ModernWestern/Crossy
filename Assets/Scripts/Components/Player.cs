@@ -8,7 +8,7 @@ public class Player : PoolObject
 
     private const string Trunk = "Trunk";
 
-    private const string Finish = "Finish";
+    private const string Goal = "Goal";
 
     private static readonly int IgnoreTint = Shader.PropertyToID("_IgnoreTint");
 
@@ -47,7 +47,7 @@ public class Player : PoolObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Finish))
+        if (other.CompareTag(Goal))
         {
             transform.eulerAngles = Vector3.up * 180;
 
@@ -74,7 +74,6 @@ public class Player : PoolObject
     {
         if (other.CompareTag(Water) && transform.parent == null)
         {
-            Debug.Log("Water!!!!!!!!!");
             SetDamage();
         }
     }

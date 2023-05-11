@@ -52,8 +52,8 @@ public class CarSpawner : MonoBehaviour
         var point = Point();
 
         var randomCarType = Random.Range(ObjectType.Taxi.ToInt(), ObjectType.Count.ToInt());
-        //                                                                                                    |  noon/dawn  | night |    day     | 
-        var vehicleType = (ObjectType)(data == null ? randomCarType : data.IsDay.HasValue ? data.IsDay.Value ? randomCarType : 2 : randomCarType);
+        //                                                                                                    |  noon/dawn  |          night         |       day      | 
+        var vehicleType = (ObjectType)(data == null ? randomCarType : data.IsDay.HasValue ? data.IsDay.Value ? randomCarType : ObjectType.Taxi.ToInt() : randomCarType);
 
         var currentVehicle = PoolController.Shift(vehicleType);
 
@@ -69,8 +69,8 @@ public class CarSpawner : MonoBehaviour
         loop.Stop();
 
         var randomTime = Random.Range(timeRange.x, timeRange.y);
-        //                                                                                    |     noon/dawn     |     night      |    day    | 
-        loop.Start(Spawn, data == null ? randomTime : data.IsDay.HasValue ? data.IsDay.Value ? 0.5f * randomTime : 2 * randomTime : randomTime);
+        //                                                                                    |     noon/dawn     |         night        |      day     | 
+        loop.Start(Spawn, data == null ? randomTime : data.IsDay.HasValue ? data.IsDay.Value ? 0.5f * randomTime : ObjectType.Taxi.ToInt() * randomTime : randomTime);
     }
 
     private Transform Point()

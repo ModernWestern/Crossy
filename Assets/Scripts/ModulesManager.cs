@@ -1,5 +1,4 @@
 using Utils;
-using System;
 using Json2CSharp;
 using UnityEngine;
 using System.Collections.Generic;
@@ -51,7 +50,7 @@ public class ModulesManager : MonoBehaviour
                     false => new Vector3(data.Location.Moon.Altitude, data.Location.Moon.Azimuth, data.Location.Moon.Distance)
                 };
 
-                astro.Shade = Tuple.Create(data.Location.WeatherDescription, data.Location.Time.Hour);
+                astro.Shade = (data.Location.Time.Hour, data.Location.Rain);
 
                 clouds.Direction = data.Location.WindAngle;
 

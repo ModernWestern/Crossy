@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trunk
   - Water
+  - Goal
   layers:
   - Default
   - TransparentFX

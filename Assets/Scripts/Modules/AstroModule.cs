@@ -7,14 +7,11 @@ public class AstroModule : MonoBehaviour
 {
     [SerializeField] private Gradient day;
 
+    [SerializeField] private Gradient rain;
+
     private Color dayLight;
 
     private Vector3 color;
-
-    private void Awake()
-    {
-        // dayLight = light.color;
-    }
 
     /// <summary>
     /// Altitude, Azimuth, Distance
@@ -35,8 +32,15 @@ public class AstroModule : MonoBehaviour
         }
     }
 
-    public Tuple<Weather.Description, int> Shade
+    public (int Hour, float Rain) Shade
     {
-        set => Shader.SetGlobalColor(Constants.Tint, day.Evaluate(((float)value.Item2).Normalize(0, 23)));
+        set
+        {
+            var rainCol = rain.Evaluate(value.Rain.Normalize(0, value.Rain <= 10 ? 10 : value.Rain));
+
+            var dayCol = day.Evaluate(((float)value.Hour).Normalize(0, 23));
+
+            Shader.SetGlobalColor(Constants.Tint, dayCol * rainCol);
+        }
     }
 }
