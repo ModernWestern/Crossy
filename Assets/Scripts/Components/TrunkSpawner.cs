@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEngine;
 using ModernWestern;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class TrunkSpawner : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class TrunkSpawner : MonoBehaviour
     {
         var point = Point();
 
-        var trunkType = Random2.Value() ? ObjectType.TrunkShort : ObjectType.TrunkLarge;
+        var trunkType = ModernWestern.Random.RandomValue((ObjectType.TrunkSmall, 5f), (ObjectType.TrunkShort, 4f), (ObjectType.TrunkLarge, 1f));
 
         var currentTrunk = PoolController.Shift<Trunk>(trunkType);
 

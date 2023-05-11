@@ -107,6 +107,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _IgnoreDirection: 1
     - _IgnoreTint: 0
     - _LightAttenuation: 0.9
     - _Metallic: 0

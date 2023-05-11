@@ -53,6 +53,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FlowTexture:
+        m_Texture: {fileID: 2800000, guid: ca2018cce4b3041ca94fe509b701bce5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FoamTexture:
+        m_Texture: {fileID: 2800000, guid: 16207bd6e40b9f14393f5f4c46b66bf1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Gradient:
         m_Texture: {fileID: 2800000, guid: 0c6de48b6d82b804c8ac307f366aed77, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -75,6 +83,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_8e358c62d3cd4b0eaa6c28281f308b41_Out_0:
+        m_Texture: {fileID: 2800000, guid: 81a16e7ea5f5fa5478248ea40bc1ffb5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_bfe3c03d775142f0917ea9ca1c2f6d16_Out_0:
+        m_Texture: {fileID: 2800000, guid: d1da77d48a6165a41b4701cc796c778f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -104,10 +120,16 @@ Material:
     - Vector1_b1d07a1602c740f7a0a707aeb9219fe6: 3
     - Vector1_c7232c2ee10c41099fd4f461479c4a1c: 700
     - _AlphaTreshold: 1
+    - _Blend: 4.68
     - _BumpScale: 1
+    - _Coppiness: -10.65
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float: 0.39
+    - _FlowSpeed: 21.5
+    - _FlowStrength: 0.22
+    - _FoamDistance: 1.5
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -118,6 +140,7 @@ Material:
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Size: 0.65
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -130,7 +153,10 @@ Material:
     - Vector2_7eb82262d78e4e23be5622d88b25c9d0: {r: 0.3, g: 1, b: 0, a: 0}
     - Vector2_f6e4a0daa0d84f8084b7471cbd634989: {r: 3, g: 0.3, b: 0, a: 0}
     - _Color: {r: 0, g: 0.72164917, b: 1, a: 1}
+    - _DarkFoamColor: {r: 0, g: 0.4985038, b: 0.7830189, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FoamColor: {r: 0, g: 0, b: 0, a: 0}
+    - _LightFoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

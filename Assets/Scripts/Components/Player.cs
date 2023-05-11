@@ -74,6 +74,7 @@ public class Player : PoolObject
     {
         if (other.CompareTag(Water) && transform.parent == null)
         {
+            Debug.Log("Water!!!!!!!!!");
             SetDamage();
         }
     }

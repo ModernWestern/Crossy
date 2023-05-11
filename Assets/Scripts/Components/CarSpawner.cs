@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEngine;
 using ModernWestern;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class CarSpawner : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class CarSpawner : MonoBehaviour
         //points = new Queue<Transform>(roads.Select(road => road.GetChildren()).SelectMany(point => point).Distinct());
 
         // One point for road
-        points = new Queue<Transform>(roads.Select(road => road.GetChild(Random2.Value() ? 0 : 1)));
+        points = new Queue<Transform>(roads.Select(road => road.GetChild(ModernWestern.Random.Boolean() ? 0 : 1)));
 
         loop = new Loop(Random.Range(timeRange.x, timeRange.y), this);
 
@@ -50,7 +51,7 @@ public class CarSpawner : MonoBehaviour
     {
         var point = Point();
 
-        var randomCarType = Random.Range(2, 5);
+        var randomCarType = Random.Range(ObjectType.Taxi.ToInt(), ObjectType.Count.ToInt());
         //                                                                                                    |  noon/dawn  | night |    day     | 
         var vehicleType = (ObjectType)(data == null ? randomCarType : data.IsDay.HasValue ? data.IsDay.Value ? randomCarType : 2 : randomCarType);
 

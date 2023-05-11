@@ -2266,26 +2266,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
+  - prefab: {fileID: 3098735895402355204, guid: b5cef15503dd9f1409c55308e6c9f14e, type: 3}
+    container: {fileID: 1740552016}
+    amount: 15
+    type: 0
   - prefab: {fileID: 8153577511864932656, guid: 86c00adbd64d271439f24687c2b05aa7, type: 3}
     container: {fileID: 1740552016}
     amount: 20
-    type: 0
+    type: 1
   - prefab: {fileID: 3098735895402355204, guid: 354b401ab98eb0e48853987e3e634f07, type: 3}
     container: {fileID: 1740552016}
     amount: 20
-    type: 1
+    type: 2
   - prefab: {fileID: 590318600870582799, guid: 69076425aebc00e45a6f4f77ed5145ca, type: 3}
     container: {fileID: 1740552016}
     amount: 15
-    type: 2
-  - prefab: {fileID: 6071425050829023316, guid: 50b20e7531c18004cba47e3f5af1f51e, type: 3}
-    container: {fileID: 1740552016}
-    amount: 15
-    type: 4
+    type: 3
   - prefab: {fileID: 1413780632481151358, guid: 4d4e80de983867d42be78e4d03ec7e1f, type: 3}
     container: {fileID: 1740552016}
     amount: 15
-    type: 3
+    type: 4
+  - prefab: {fileID: 6071425050829023316, guid: 50b20e7531c18004cba47e3f5af1f51e, type: 3}
+    container: {fileID: 1740552016}
+    amount: 15
+    type: 5
 --- !u!4 &1740552016
 Transform:
   m_ObjectHideFlags: 0

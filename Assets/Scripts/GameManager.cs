@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     {
         Shader.SetGlobalVector(Constants.Light, Vector3.one / 2);
         
+        Shader.SetGlobalFloat(Constants.Turbulence, 0);
+        
         Shader.SetGlobalColor(Constants.Tint, Color.white);
 
         playerEvents.OnGameOver += OnGameOver;

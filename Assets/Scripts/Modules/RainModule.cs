@@ -12,7 +12,7 @@ public class RainModule : MonoBehaviour
         foreach (var particle in particles)
         {
             particle.Stop(true);
-            
+
             particle.gameObject.SetActive(false);
         }
     }
@@ -24,7 +24,7 @@ public class RainModule : MonoBehaviour
             foreach (var particle in particles)
             {
                 particle.Stop(true);
-                
+
                 particle.gameObject.SetActive(false);
             }
 
@@ -35,24 +35,24 @@ public class RainModule : MonoBehaviour
                 case <= 1 and > 0:
                     Play(ref particles[0], rain);
                     break;
-                
+
                 case <= 2 and >= 1:
                     Play(ref particles[0], rain);
                     Play(ref particles[1], rain);
                     break;
-                
+
                 case <= 3 and >= 2:
                     Play(ref particles[0], rain);
                     Play(ref particles[1], rain);
                     Play(ref particles[2], rain / 2);
                     break;
-                
+
                 case <= 4 and >= 3:
                     Play(ref particles[0], rain);
                     Play(ref particles[1], rain);
                     Play(ref particles[2], rain);
                     break;
-                
+
                 case >= 4:
                     Play(ref particles[0]);
                     Play(ref particles[1]);
@@ -60,6 +60,8 @@ public class RainModule : MonoBehaviour
                     Play(ref particles[3]);
                     break;
             }
+
+            Shader.SetGlobalFloat(Constants.Turbulence, value.Normalize(0, value <= 10 ? 10 : value));
         }
     }
 
@@ -71,7 +73,7 @@ public class RainModule : MonoBehaviour
         }
 
         particle.gameObject.SetActive(true);
-        
+
         var module = particle.emission;
 
         module.rateOverTime = emission.HasValue ? Mathf.CeilToInt(emission.Value.RemapWithCurve(0, 5, 0, 1000, rainStrength)) : 1000;

@@ -1,5 +1,6 @@
 ﻿public enum ObjectType
 {
+    TrunkSmall,
     TrunkShort,
     TrunkLarge,
     Taxi,
