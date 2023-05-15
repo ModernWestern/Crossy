@@ -94,6 +94,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _IgnoreDirection: 0
     - _IgnoreTint: 0
     - _LightAttenuation: 0.9
     - _Metallic: 0
@@ -114,7 +115,7 @@ Material:
     - _Color: {r: 0.5, g: 0.32075474, b: 0.2783019, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Tiiling: {r: 0.04, g: 1, b: 0, a: 0}
+    - _Tiiling: {r: -2, g: 0.05, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1004885248909514814
 MonoBehaviour:

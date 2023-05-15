@@ -61,7 +61,7 @@ public class CarSpawner : MonoBehaviour
         {
             return;
         }
-
+        
         currentVehicle.Position = point.position;
 
         currentVehicle.Rotation = point.rotation;
@@ -69,8 +69,8 @@ public class CarSpawner : MonoBehaviour
         loop.Stop();
 
         var randomTime = Random.Range(timeRange.x, timeRange.y);
-        //                                                                                    |     noon/dawn     |         night        |      day     | 
-        loop.Start(Spawn, data == null ? randomTime : data.IsDay.HasValue ? data.IsDay.Value ? 0.5f * randomTime : ObjectType.Taxi.ToInt() * randomTime : randomTime);
+        //                                                                                    |     noon/dawn     |       night       |    day     | 
+        loop.Start(Spawn, data == null ? randomTime : data.IsDay.HasValue ? data.IsDay.Value ? 0.75f * randomTime : randomTime * 1.5f : randomTime);
     }
 
     private Transform Point()

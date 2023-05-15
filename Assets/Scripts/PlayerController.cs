@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     {
         player.Events = events;
 
+        // Balloon.SetActive(player);
+
         events.OnFinish += () =>
         {
             goalCount++;
@@ -27,9 +29,13 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            player.Animation(true);
+            player.ChickenCrossTheRoad = true;
+
+            player.SetAnimation(true);
 
             player = Instantiate(player);
+
+            // Balloon.SetActive(player);
 
             player.Events = events;
 
@@ -39,7 +45,12 @@ public class PlayerController : MonoBehaviour
         if (this)
         {
             // Avoid player movement after Gameover call
-            events.OnGameOver += value => gameObject.SetActive(false);
+            events.OnGameOver += value =>
+            {
+                gameObject.SetActive(false);
+                
+                Balloon.SetActive(null);
+            };
         }
     }
 

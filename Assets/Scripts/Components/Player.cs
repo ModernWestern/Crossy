@@ -4,15 +4,17 @@ using ModernWestern;
 
 public class Player : PoolObject
 {
+    private static readonly int IgnoreTint = Shader.PropertyToID("_IgnoreTint");
+
     private const string Water = "Water";
 
     private const string Trunk = "Trunk";
 
     private const string Goal = "Goal";
 
-    private static readonly int IgnoreTint = Shader.PropertyToID("_IgnoreTint");
-
     public PlayerEvents Events { private get; set; }
+
+    public bool ChickenCrossTheRoad { get; set; }
 
     [SerializeField] private MeshRenderer mesh;
 
@@ -51,6 +53,8 @@ public class Player : PoolObject
         {
             transform.eulerAngles = Vector3.up * 180;
 
+            Balloon.SetActive(null);
+
             Events.Finish();
 
             Events = null;
@@ -58,7 +62,16 @@ public class Player : PoolObject
 
         if (other.CompareTag(Trunk))
         {
+            var position = other.GetComponent<Trunk>().GetPlace(transform.position);
+
             transform.SetParent(other.transform, true);
+
+            if (position.HasValue)
+            {
+                transform.position = position.Value;
+            }
+
+            Balloon.SetActive(this);
         }
     }
 
@@ -80,6 +93,8 @@ public class Player : PoolObject
 
     public void SetDamage()
     {
+        Balloon.SetActive(null);
+
         if (Events)
         {
             Events.Damage();
@@ -106,10 +121,10 @@ public class Player : PoolObject
 
         transform.eulerAngles = rotation;
 
-        Animation();
+        SetAnimation();
     }
 
-    public void Animation(bool loop = false)
+    public void SetAnimation(bool loop = false)
     {
         if (tween != null)
         {

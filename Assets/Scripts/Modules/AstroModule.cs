@@ -1,5 +1,3 @@
-using System;
-using Json2CSharp;
 using UnityEngine;
 using ModernWestern;
 

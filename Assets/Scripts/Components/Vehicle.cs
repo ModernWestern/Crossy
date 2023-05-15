@@ -6,8 +6,8 @@ public class Vehicle : PoolObject
     [SerializeField] private GameObject lights;
 
     [SerializeField] private float speed = 1f;
-    
-    private static Action<bool?> OnLightsSetActive;
+
+    private static Action<bool?> OnTimeOfDay;
 
     private float? previousSpeed;
 
@@ -25,9 +25,9 @@ public class Vehicle : PoolObject
     {
         base.Awake();
 
-        LightsSetActive(null);
+        TimeOfDay(null);
 
-        OnLightsSetActive += LightsSetActive;
+        OnTimeOfDay += TimeOfDay;
     }
 
     private void Update()
@@ -35,17 +35,18 @@ public class Vehicle : PoolObject
         transform.Translate(Vector3.right * (speed * Time.deltaTime), Space.Self);
     }
 
-    private void LightsSetActive(bool? value)
+    private void TimeOfDay(bool? value)
     {
-        lights.SetActive(!value ?? false);
-
-        if (Type == ObjectType.Taxi || gameObject.activeSelf)
+        if (value.HasValue)
         {
-            //                                      | noon/dawn | night | day | 
-            OverrideSpeed = value.HasValue ? value.Value ? null : 25 : null;
+            lights.SetActive(!value.Value);
+
+            OverrideSpeed = value.Value ? 5 : 25;
         }
         else
         {
+            lights.SetActive(false);
+            
             OverrideSpeed = null;
         }
     }
@@ -58,5 +59,5 @@ public class Vehicle : PoolObject
         }
     }
 
-    public static void SetActiveLights(bool? value) => OnLightsSetActive?.Invoke(value);
+    public static void SetActiveLights(bool? value) => OnTimeOfDay?.Invoke(value);
 }
