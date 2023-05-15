@@ -12,10 +12,10 @@ public class Player : PoolObject
 
     private const string Goal = "Goal";
 
-    public PlayerEvents Events { private get; set; }
-
     public bool ChickenCrossTheRoad { get; set; }
-
+    
+    public PlayerEvents Events { private get; set; }
+    
     [SerializeField] private MeshRenderer mesh;
 
     [SerializeField] private ParticleSystem embers;
@@ -25,7 +25,7 @@ public class Player : PoolObject
     private Vector3 defaultPosition = new(-3, 1, 0);
 
     private LTDescr tween;
-
+    
     public override void Awake()
     {
         base.Awake();

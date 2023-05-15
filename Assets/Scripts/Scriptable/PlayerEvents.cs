@@ -6,10 +6,12 @@ public class PlayerEvents : ScriptableObject
 {
     public event Action<GameplayData> OnCityChange;
 
-    public event Action OnDamage, OnFinish;
+    public event Action OnStart, OnDamage, OnFinish;
 
     public event Action<bool> OnGameOver;
 
+    public void Start() => OnStart?.Invoke();
+    
     public void Damage() => OnDamage?.Invoke();
 
     public void Finish() => OnFinish?.Invoke();
@@ -20,6 +22,8 @@ public class PlayerEvents : ScriptableObject
 
     public void CleanAll()
     {
+        OnStart = null;
+        
         OnDamage = null;
 
         OnFinish = null;

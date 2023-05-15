@@ -33,6 +33,8 @@ public class Timer : MonoBehaviour
                 _ => false
             });
         }
+        
+        events.OnStart += StartTimer;
     }
 
     private void Start()
@@ -42,6 +44,11 @@ public class Timer : MonoBehaviour
             return;
         }
 
+        StartTimer();
+    }
+
+    public void StartTimer()
+    {
         timerRoutine?.Start(() => settings.GameOver, time => timer.text = TimeSpan.FromSeconds(time).ToString(Format), () => events.GameOver(false), this);
     }
 }

@@ -23,12 +23,11 @@ public class ModulesManager : MonoBehaviour
 
     private void Awake()
     {
-        input.OnSet += (json, completed) => StartCoroutine(UNet.Fetch($"run.mocky.io/v3/{json}", (AppData data) =>
+        input.OnSet += (json, completed) => StartCoroutine(UNet.Fetch(json.Contains("mocky") ? json : $"run.mocky.io/v3/{json}", (AppData data) =>
         {
             buttons.Populate(data.GetCitiesSortedByTime);
 
             api = data.api;
-            
         }, completed));
 
         buttons.OnCityChange += city =>
@@ -62,15 +61,20 @@ public class ModulesManager : MonoBehaviour
 
                 clouds.IsDay = data.IsDay;
 
-#if UNITY_EDITOR
-                UDebug.ClearConsole();
-#endif
                 events.CityChange(data);
 
+                events.Start();
+
+#if UNITY_EDITOR
+                UDebug.ClearConsole();
+
                 Debug.Log(data);
+#endif
             });
 
             clock.City = city;
         };
+
+        input.OnSkip += () => events.Start();
     }
 }

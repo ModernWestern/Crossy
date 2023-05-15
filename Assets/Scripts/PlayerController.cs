@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    const string Player = "Player";
+    const string _Player = "Player";
 
     [SerializeField] private Player player;
 
@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
 
     private int goalCount;
 
+    private bool canMove;
+
     private void Awake()
     {
         player.Events = events;
 
-        // Balloon.SetActive(player);
+        events.OnStart += () => canMove = true;
 
         events.OnFinish += () =>
         {
@@ -35,11 +37,9 @@ public class PlayerController : MonoBehaviour
 
             player = Instantiate(player);
 
-            // Balloon.SetActive(player);
-
             player.Events = events;
 
-            player.name = Player;
+            player.name = _Player;
         };
 
         if (this)
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             events.OnGameOver += value =>
             {
                 gameObject.SetActive(false);
-                
+
                 Balloon.SetActive(null);
             };
         }
@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             player.Up();
