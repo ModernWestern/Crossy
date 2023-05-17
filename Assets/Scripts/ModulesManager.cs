@@ -63,7 +63,7 @@ public class ModulesManager : MonoBehaviour
 
                 events.CityChange(data);
 
-                events.Start();
+                input.StartGame();
 
 #if UNITY_EDITOR
                 UDebug.ClearConsole();

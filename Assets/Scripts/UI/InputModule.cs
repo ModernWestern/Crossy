@@ -23,6 +23,7 @@ public class InputModule : MonoBehaviour
                 buttons[0].transform.parent.gameObject.SetActive(!success);
 
                 inputs[0].Success = success;
+
                 inputs[0].Enable = !success;
 
                 isSet = success;
@@ -43,21 +44,36 @@ public class InputModule : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void StartGame()
+    {
+        buttons[0].transform.parent.gameObject.SetActive(true);
+
+        foreach (var button in buttons)
+        {
+            button.gameObject.SetActive(false);
+        }
+
+        buttons[^1].gameObject.SetActive(true);
+    }
+
     public void SetHovered()
     {
         buttons[0].layoutPriority = 0;
+
         buttons[1].layoutPriority = -1;
     }
 
     public void SkipHovered()
     {
         buttons[0].layoutPriority = -1;
+
         buttons[1].layoutPriority = 0;
     }
 
     public void PointerOut()
     {
         buttons[0].layoutPriority = 0;
+
         buttons[1].layoutPriority = 0;
     }
 }
