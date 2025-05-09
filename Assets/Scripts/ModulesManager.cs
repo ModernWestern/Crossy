@@ -28,6 +28,7 @@ public class ModulesManager : MonoBehaviour
             buttons.Populate(data.GetCitiesSortedByTime);
 
             api = data.api;
+            
         }, completed));
 
         buttons.OnCityChange += city =>
